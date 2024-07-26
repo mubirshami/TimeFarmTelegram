@@ -18,7 +18,7 @@ import Rules from "./components/rules";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/TimeFarmTelegram">
         <Routes >
           <Route path="/" element={<HomePage />} />
           <Route path="/wallet" element={<Wallet />} />
