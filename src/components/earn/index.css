@@ -1,0 +1,51 @@
+.earn-container{
+    width: 500px;
+    margin: auto;
+    height: 100%;
+    background-color: #f3f3f3;
+}
+
+.main-heading{
+    display: flex;
+    justify-content: center;
+}
+
+.main-content{
+    padding: 10px;
+}
+
+.earning-tab{
+    display: flex;
+    border-radius: 1rem;
+    background-color: white;
+    margin: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.earning-tab:hover{
+background-color: aliceblue;
+cursor: pointer;
+}
+
+.earning-tab:hover .icons-style{
+    background-color: blue;
+    color: white;
+}
+
+.tab-info{
+    padding: 1rem;
+}
+
+.tab-heading{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.icons-style{
+    background-color: lightgrey;
+    border-radius: 50%;
+    padding: 10px;
+    margin: 10px;
+}
+

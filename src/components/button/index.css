@@ -1,0 +1,16 @@
+.button {
+  color: white;
+  background-color: blue;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 0.5rem 4rem;
+  cursor: pointer;
+  border-color: blue;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.button-icon{
+  height: 15px;
+  width: 15px;
+}

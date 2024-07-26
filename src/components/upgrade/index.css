@@ -1,0 +1,42 @@
+.upgrade-container {
+  width: 500px;
+  margin: auto;
+  height: 500px;
+  background-color: #f3f3f3;
+  overflow: scroll;
+}
+
+.clocks-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.clock-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.clock-tokens{
+    margin-bottom: 0.5rem;
+}
+
+.watch-img {
+  width: 158;
+  height: 190;
+}
+
+.dollar-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.clocks-option button {
+  padding: 0.5rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+

@@ -1,0 +1,29 @@
+.staking-container{
+    width: 500px;
+    margin: auto;
+    height: 100%;
+    background-color: #f3f3f3;
+}
+
+.main-heading{
+    display: flex;
+    justify-content: center;
+}
+
+.main-description{
+    font-size: 17px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.img{
+    margin: auto;
+    max-width: 250px;
+    height: auto;
+}
+
+.main-button{
+    display: flex;
+    justify-content: center;
+}

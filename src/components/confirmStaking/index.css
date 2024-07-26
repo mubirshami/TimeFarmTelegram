@@ -1,0 +1,65 @@
+.confirm-staking-container {
+    width: 500px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+  }
+  
+  .step-three {
+    margin-bottom: 20px;
+  }
+  
+  .step-three-text {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  
+  .step-three-bar {
+    background-color: #eee;
+    border-radius: 5px;
+    height: 5px;
+    width: 100%;
+  }
+  
+  .step-three-bar-fill {
+    background-color: #4caf50;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .step-three-heading {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  .earning-card{
+    border: 1px solid white;
+    border-radius: 1rem;
+    background-color: white;
+    margin-bottom: 1rem;
+  }
+
+  .earning-card-heading{
+    display: flex;
+    margin: 1rem;
+    font-weight: bold;
+  }
+
+  .step-three-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem;
+  }
+  
+  
+
+
+
+  

@@ -1,0 +1,38 @@
+.farming-timer-container{
+    width: 500px;
+    margin: auto;
+    height: 100%;
+    background-color: #f3f3f3;
+    text-align: center;
+}
+.top-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+}
+
+.upgrade-translate{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.upgrade-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2rem;
+    border-radius: 1em;
+    border: 1px solid blue;
+    background-color: blue;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+

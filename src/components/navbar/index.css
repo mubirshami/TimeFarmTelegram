@@ -1,0 +1,29 @@
+/* index.css */
+.list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around; 
+  }
+  
+  .list-item {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-between;
+    font-size: 18px;
+    color: #b3b2b2;
+  }
+  
+  .list-item:hover {
+    color: blue;
+  }
+  
+  .list-item.selected {
+    color: blue;
+  }
+  
+  

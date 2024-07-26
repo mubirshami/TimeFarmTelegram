@@ -1,0 +1,149 @@
+import React from "react";
+import "./index.css";
+import Navbar from "../navbar";
+import Button from "../button";
+
+const Upgrade = () => {
+  return (
+    <div className="upgrade-container">
+      <div className="clocks-section">
+        <div className="clocks-option">
+          <img
+            class="watch-img"
+            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/0.png"
+            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/0-2x.png 2x"
+            alt="Sand Clock"
+          />
+          <div className="clock-title">Sand Clock</div>
+          <div className="clock-tokens">x1 tokens every 4 hours</div>
+          <div className="clock-price">
+            <img
+              class="dollar-icon"
+              src="https://img-tap-miniapp.chrono.tech/images/icons/dollar.svg"
+              alt="dollar"
+            />
+            <span>Free</span>
+          </div>
+          <Button text="Selected" />
+        </div>
+        <div className="clocks-option">
+          <img
+            class="watch-img"
+            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/1.png"
+            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/1-2x.png 2x"
+            alt="Pendulum Clock"
+          />
+          <div className="clock-title">Pendulum Clock</div>
+          <div className="clock-tokens">x2 tokens every 4 hours</div>
+          <div className="clock-price">
+            <img
+              class="dollar-icon"
+              src="https://img-tap-miniapp.chrono.tech/images/icons/dollar.svg"
+              alt="dollar"
+            />
+            <span>1,000,000</span>
+          </div>
+          <Button text="Not Enough" icon={"https://img-tap-miniapp.chrono.tech/svg/oi_dollar_white.svg"} />
+        </div>
+        <div className="clocks-option">
+          <img
+            class="watch-img"
+            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/2.png"
+            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/2-2x.png 2x"
+            alt="Regular Clock"
+          />
+          <div className="clock-title">Regular Clock</div>
+          <div className="clock-tokens">x3 tokens every 4 hours</div>
+          <div className="clock-price">
+            <img
+              class="dollar-icon"
+              src="https://img-tap-miniapp.chrono.tech/images/icons/dollar.svg"
+              alt="dollar"
+            />
+            <span>1,500,000</span>
+          </div>
+          <Button text="Unavailable" />
+        </div>
+        <div className="clocks-option">
+          <img
+            class="watch-img"
+            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/3.png"
+            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/3-2x.png 2x"
+            alt="Modern Clock"
+          />
+          <div className="clock-title">Modern Clock</div>
+          <div className="clock-tokens">x5 tokens every 4 hours</div>
+          <div className="clock-price">
+            <img
+              class="dollar-icon"
+              src="https://img-tap-miniapp.chrono.tech/images/icons/dollar.svg"
+              alt="dollar"
+            />
+            <span>2,500,000</span>
+          </div>
+          <Button text="Unavailable" />
+        </div>
+        <div className="clocks-option">
+          <img
+            class="watch-img"
+            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/4.png"
+            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/4-2x.png 2x"
+            alt="Techno Clock"
+          />
+          <div className="clock-title">Techno Clock</div>
+          <div className="clock-tokens">x8 tokens every 4 hours</div>
+          <div className="clock-price">
+            <img
+              class="dollar-icon"
+              src="https://img-tap-miniapp.chrono.tech/images/icons/dollar.svg"
+              alt="dollar"
+            />
+            <span>4,000,000</span>
+          </div>
+          <Button text="Unavailable" />
+        </div>
+        <div className="clocks-option">
+          <img
+            class="watch-img"
+            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/5.png"
+            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/5-2x.png 2x"
+            alt="Joker Clock"
+          />
+          <div className="clock-title">Joker Clock</div>
+          <div className="clock-tokens">x13 tokens every 5 hours</div>
+          <div className="clock-price">
+            <img
+              class="dollar-icon"
+              src="https://img-tap-miniapp.chrono.tech/images/icons/dollar.svg"
+              alt="dollar"
+            />
+            <span>5,000,000</span>
+          </div>
+          <Button text="Unavailable" />
+        </div>
+        <div className="clocks-option">
+          <img
+            class="watch-img"
+            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/6.png"
+            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/6-2x.png 2x"
+            alt="Engine Clock"
+          />
+          <div className="clock-title">Engine Clock</div>
+          <div className="clock-tokens">x20 tokens every 6 hours</div>
+          <div className="clock-price">
+            <img
+              class="dollar-icon"
+              src="https://img-tap-miniapp.chrono.tech/images/icons/dollar.svg"
+              alt="dollar"
+            />
+            <span>6,000,000</span>
+          </div>
+          <Button text="Unavailable" />
+        </div>
+      </div>
+      <Navbar />
+    </div>
+  );
+};
+
+export default Upgrade;

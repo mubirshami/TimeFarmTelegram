@@ -1,0 +1,53 @@
+.task-list-container {
+    width: 500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .tab {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+  
+  .tab.selected {
+    background-color: #fff;
+    border-bottom: none;
+    font-weight: bold;
+  }
+  
+  .tasks {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .task-action {
+    background-color: orange;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .task-action:hover {
+    background-color: darkorange;
+  }
+  
