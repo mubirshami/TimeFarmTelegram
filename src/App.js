@@ -19,8 +19,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+        <Routes >
+          <Route path="TimeFarmTelegram/" element={<HomePage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/earn" element={<Earn />} />
