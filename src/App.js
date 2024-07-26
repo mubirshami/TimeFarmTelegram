@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes >
-          <Route path="TimeFarmTelegram/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/earn" element={<Earn />} />

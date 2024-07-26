@@ -15,7 +15,7 @@ const Navbar = () => {
       <nav>
         <ul className="list">
           <li>
-            <div className="list-item" onClick={() => navigate("TimeFarmTelegram/")}>
+            <div className="list-item" onClick={() => navigate("/")}>
               {/* <img
                 src="https://img-tap-miniapp.chrono.tech/svg/icon-home.svg"
                 alt="tab-icon"
