@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TimeFarmTelegram/static/css/main.ca601a82.css",
+    "main.js": "/TimeFarmTelegram/static/js/main.0ca0c774.js",
+    "index.html": "/TimeFarmTelegram/index.html",
+    "main.ca601a82.css.map": "/TimeFarmTelegram/static/css/main.ca601a82.css.map",
+    "main.0ca0c774.js.map": "/TimeFarmTelegram/static/js/main.0ca0c774.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca601a82.css",
+    "static/js/main.0ca0c774.js"
+  ]
+}
