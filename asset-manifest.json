@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/TimeFarmTelegram/static/css/main.45e98da3.css",
+    "main.css": "/TimeFarmTelegram/static/css/main.25b36e6e.css",
     "main.js": "/TimeFarmTelegram/static/js/main.7f88abdd.js",
     "index.html": "/TimeFarmTelegram/index.html",
-    "main.45e98da3.css.map": "/TimeFarmTelegram/static/css/main.45e98da3.css.map",
+    "main.25b36e6e.css.map": "/TimeFarmTelegram/static/css/main.25b36e6e.css.map",
     "main.7f88abdd.js.map": "/TimeFarmTelegram/static/js/main.7f88abdd.js.map"
   },
   "entrypoints": [
-    "static/css/main.45e98da3.css",
+    "static/css/main.25b36e6e.css",
     "static/js/main.7f88abdd.js"
   ]
 }
