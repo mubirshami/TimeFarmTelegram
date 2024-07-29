@@ -1,13 +1,20 @@
 {
   "files": {
-    "main.css": "/TimeFarmTelegram/static/css/main.25b36e6e.css",
-    "main.js": "/TimeFarmTelegram/static/js/main.7f88abdd.js",
+    "main.css": "/TimeFarmTelegram/static/css/main.ada51ab3.css",
+    "main.js": "/TimeFarmTelegram/static/js/main.09e32f2e.js",
+    "static/media/Level_02.png": "/TimeFarmTelegram/static/media/Level_02.84d4c6b3386fe24d78b4.png",
+    "static/media/Level_05.png": "/TimeFarmTelegram/static/media/Level_05.7b79f9190a83e577b739.png",
+    "static/media/Level_04.png": "/TimeFarmTelegram/static/media/Level_04.04b84bb3e4d566820a47.png",
+    "static/media/Level_03.png": "/TimeFarmTelegram/static/media/Level_03.df48588b366562b37eed.png",
+    "static/media/Level_01.png": "/TimeFarmTelegram/static/media/Level_01.283ec0cb0b8ce868fa7e.png",
+    "static/media/Telegram Bot Welcome page.jpg": "/TimeFarmTelegram/static/media/Telegram Bot Welcome page.efe8b9c40ed40b7363cf.jpg",
+    "static/media/Game loading page image.jpg": "/TimeFarmTelegram/static/media/Game loading page image.055b0dc6a08b2daaafa7.jpg",
     "index.html": "/TimeFarmTelegram/index.html",
-    "main.25b36e6e.css.map": "/TimeFarmTelegram/static/css/main.25b36e6e.css.map",
-    "main.7f88abdd.js.map": "/TimeFarmTelegram/static/js/main.7f88abdd.js.map"
+    "main.ada51ab3.css.map": "/TimeFarmTelegram/static/css/main.ada51ab3.css.map",
+    "main.09e32f2e.js.map": "/TimeFarmTelegram/static/js/main.09e32f2e.js.map"
   },
   "entrypoints": [
-    "static/css/main.25b36e6e.css",
-    "static/js/main.7f88abdd.js"
+    "static/css/main.ada51ab3.css",
+    "static/js/main.09e32f2e.js"
   ]
 }
