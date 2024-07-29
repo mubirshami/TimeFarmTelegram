@@ -36,3 +36,15 @@
     cursor: pointer;
 }
 
+.welcome-dawg-image{
+    width: 175px;
+}
+
+.farming-info{
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 3rem;
+}
+

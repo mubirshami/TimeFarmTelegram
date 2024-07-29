@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import Navbar from "../navbar";
 import { useNavigate } from "react-router-dom";
+import WelcomeImage from "../../assets/Telegram Bot Welcome page.jpg";
 
 
 const HomePage = () => {
@@ -69,9 +70,9 @@ const HomePage = () => {
         <>
           <div className="hourglass-container">
             <img
-              src="hourglass-image.png"
-              alt="Hourglass"
-              className="hourglass-image"
+              src={WelcomeImage}
+              alt="Welcome Dawg"
+              className="welcome-dawg-image"
             />
           </div>
           <div className="farming-info">

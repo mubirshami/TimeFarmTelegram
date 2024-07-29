@@ -2,6 +2,11 @@ import React from "react";
 import "./index.css";
 import Navbar from "../navbar";
 import Button from "../button";
+import Level1 from "../../assets/Level_01.png";
+import Level2 from "../../assets/Level_02.png";
+import Level3 from "../../assets/Level_03.png";
+import Level4 from "../../assets/Level_04.png";
+import Level5 from "../../assets/Level_05.png";
 
 const Upgrade = () => {
   return (
@@ -10,9 +15,8 @@ const Upgrade = () => {
         <div className="clocks-option">
           <img
             class="watch-img"
-            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/0.png"
-            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/0-2x.png 2x"
-            alt="Sand Clock"
+            src={Level1}
+            alt="Level 1 Dawg"
           />
           <div className="clock-title">Sand Clock</div>
           <div className="clock-tokens">x1 tokens every 4 hours</div>
@@ -29,9 +33,8 @@ const Upgrade = () => {
         <div className="clocks-option">
           <img
             class="watch-img"
-            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/1.png"
-            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/1-2x.png 2x"
-            alt="Pendulum Clock"
+            src={Level2}
+            alt="Level 2 Dawg"
           />
           <div className="clock-title">Pendulum Clock</div>
           <div className="clock-tokens">x2 tokens every 4 hours</div>
@@ -48,9 +51,8 @@ const Upgrade = () => {
         <div className="clocks-option">
           <img
             class="watch-img"
-            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/2.png"
-            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/2-2x.png 2x"
-            alt="Regular Clock"
+            src={Level3}
+            alt="Level 3 Dawg"
           />
           <div className="clock-title">Regular Clock</div>
           <div className="clock-tokens">x3 tokens every 4 hours</div>
@@ -67,9 +69,8 @@ const Upgrade = () => {
         <div className="clocks-option">
           <img
             class="watch-img"
-            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/3.png"
-            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/3-2x.png 2x"
-            alt="Modern Clock"
+            src={Level4}
+            alt="Level 4 Dawg"
           />
           <div className="clock-title">Modern Clock</div>
           <div className="clock-tokens">x5 tokens every 4 hours</div>
@@ -86,9 +87,8 @@ const Upgrade = () => {
         <div className="clocks-option">
           <img
             class="watch-img"
-            src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/4.png"
-            srcset="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/4-2x.png 2x"
-            alt="Techno Clock"
+            src={Level5}
+            alt="Level 5 Dawg"
           />
           <div className="clock-title">Techno Clock</div>
           <div className="clock-tokens">x8 tokens every 4 hours</div>
@@ -102,7 +102,7 @@ const Upgrade = () => {
           </div>
           <Button text="Unavailable" />
         </div>
-        <div className="clocks-option">
+        {/* <div className="clocks-option">
           <img
             class="watch-img"
             src="https://img-tap-miniapp.chrono.tech/images/watch-marketplace/5.png"
@@ -139,7 +139,7 @@ const Upgrade = () => {
             <span>6,000,000</span>
           </div>
           <Button text="Unavailable" />
-        </div>
+        </div> */}
       </div>
       <Navbar />
     </div>
