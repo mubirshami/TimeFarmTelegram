@@ -1,18 +1,9 @@
-/* src/components/Leaderboard.css */
-
 .leaderboard-container {
     width: auto;
     margin: auto;
-    padding: 20px;
-    background: white;
+    background: #f3f3f3;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 60px; /* Adjust if needed */
-  }
-  
-  .leaderboard-header {
-    text-align: center;
-    margin-bottom: 20px;
   }
   
   .leaderboard-rewards {

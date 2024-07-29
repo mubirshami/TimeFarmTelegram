@@ -26,6 +26,7 @@ const Rules = () => {
               Pool size is 1000 USDT and 50 mil{" "}
               <span class="row">
                 <img
+                  className="rules-dollar"
                   src="https://img-tap-miniapp.chrono.tech/svg/oi_dollar.svg"
                   alt="oi_dollar"
                 />
@@ -49,11 +50,14 @@ const Rules = () => {
             <li>6th-10th place: 20 USDT + 500K $SECOND</li>
             <li>11th-20th place: 10 USDT + 500K $SECOND</li>
           </ul>
-          <p>Anyone who refers 4 people or more in a week will receive an additional 100K $SECOND. 🏆Think you’ve got what it takes to win? Start inviting friends now!</p>
-
+          <p>
+            Anyone who refers 4 people or more in a week will receive an
+            additional 100K $SECOND. 🏆Think you’ve got what it takes to win?
+            Start inviting friends now!
+          </p>
         </div>
       </div>
-        <Navbar />
+      <Navbar />
     </div>
   );
 };

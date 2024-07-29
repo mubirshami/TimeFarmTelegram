@@ -1,14 +1,12 @@
 import React from "react";
 import "./index.css";
 import Navbar from "../navbar";
+import { Link } from "react-router-dom";
 const Activity = () => {
   return (
     <div className="leaderboard-container">
       <h1 className="main-heading">Leaderboard</h1>
       <div className="leaderboard-content">
-        <div className="leaderboard-header">
-          <h2>Leaderboard</h2>
-        </div>
         <div className="leaderboard-rewards">
           <div className="reward">
             <span>Get crypto</span>
@@ -20,7 +18,7 @@ const Activity = () => {
           </div>
         </div>
         <div className="details">
-          <a href="#">More details &rarr;</a>
+          <Link to={"/rules"}>More Details</Link>
         </div>
         <div className="user-list">
           <div className="user">
@@ -33,7 +31,6 @@ const Activity = () => {
             <span className="name">Dan</span>
             <span className="points">39,835 frens</span>
           </div>
-          {/* Add more users as needed */}
         </div>
       </div>
       <Navbar />
