@@ -8,19 +8,19 @@ const Rules = () => {
       <div className="rules-section">
         <div className="rules-heading">Rules</div>
         <div className="rules-description">
-          <p>✨Sign Up for the Weekly $1,000 USDT Referral Contest✨</p>
-          <p>Your referrals have played a huge role in this success.</p>
-          <p>
+          <p className="line-text">✨Sign Up for the Weekly $1,000 USDT Referral Contest✨</p>
+          <p className="line-text">Your referrals have played a huge role in this success.</p>
+          <p className="line-text"> 
             💰To spice things up, we’re launching the Weekly League of Time.
             Referral contest with a prize fund of 1000 USDT and 500K $SECOND for
             the top 20 winners!💰
           </p>
-          <p>
+          <p className="line-text">
             💰Anyone who refers 4 people or more in a week will receive an
             additional 100K $SECOND.💰
           </p>
 
-          <p class="bold">📜 Rules</p>
+          <p class="line-text-heading">📜 Rules</p>
           <ul>
             <li>
               Pool size is 1000 USDT and 50 mil{" "}
@@ -50,7 +50,7 @@ const Rules = () => {
             <li>6th-10th place: 20 USDT + 500K $SECOND</li>
             <li>11th-20th place: 10 USDT + 500K $SECOND</li>
           </ul>
-          <p>
+          <p className="line-text">
             Anyone who refers 4 people or more in a week will receive an
             additional 100K $SECOND. 🏆Think you’ve got what it takes to win?
             Start inviting friends now!

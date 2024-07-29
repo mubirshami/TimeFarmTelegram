@@ -8,3 +8,10 @@
 .rules-dollar{
     width: 14px;
 }
+.line-text{
+    margin-bottom: 0.25rem;
+}
+.line-text-heading{
+    font-size: 18px;
+    font-weight: bold;
+}
