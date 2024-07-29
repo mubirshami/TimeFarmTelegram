@@ -13,6 +13,7 @@ import AnswerQuestion from "./components/answerQuestion";
 import Upgrade from "./components/upgrade";
 import Activity from "./components/activity";
 import Rules from "./components/rules";
+import LoadingAnimation from "./components/loading";
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
     <div className="App">
       <Router basename="/TimeFarmTelegram">
         <Routes >
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LoadingAnimation />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/earn" element={<Earn />} />
