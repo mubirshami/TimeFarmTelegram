@@ -36,7 +36,7 @@ const Upgrade = () => {
             src={Level2}
             alt="Level 2 Dawg"
           />
-          <div className="clock-title">Pendulum Clock</div>
+          <div className="clock-title">Level 2 Dawg</div>
           <div className="clock-tokens">x2 tokens every 4 hours</div>
           <div className="clock-price">
             <img
@@ -54,7 +54,7 @@ const Upgrade = () => {
             src={Level3}
             alt="Level 3 Dawg"
           />
-          <div className="clock-title">Regular Clock</div>
+          <div className="clock-title">Level 3 Dawg</div>
           <div className="clock-tokens">x3 tokens every 4 hours</div>
           <div className="clock-price">
             <img
@@ -72,7 +72,7 @@ const Upgrade = () => {
             src={Level4}
             alt="Level 4 Dawg"
           />
-          <div className="clock-title">Modern Clock</div>
+          <div className="clock-title">Level 4 Dawg</div>
           <div className="clock-tokens">x5 tokens every 4 hours</div>
           <div className="clock-price">
             <img
@@ -90,7 +90,7 @@ const Upgrade = () => {
             src={Level5}
             alt="Level 5 Dawg"
           />
-          <div className="clock-title">Techno Clock</div>
+          <div className="clock-title">Level 5 Dawg</div>
           <div className="clock-tokens">x8 tokens every 4 hours</div>
           <div className="clock-price">
             <img
