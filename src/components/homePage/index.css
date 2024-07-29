@@ -48,3 +48,21 @@
     padding: 3rem;
 }
 
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .loading-animation {
+    animation: fadeOut 2s forwards;
+  }
+  
+  .game-loading-image {
+    width: 100%;
+    max-width: 200px;
+  }
+  
