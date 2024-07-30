@@ -1,41 +1,58 @@
 .upgrade-container {
   width: auto;
   margin: auto;
-  height: 500px;
-  background-color: #f3f3f3;
+  height: 97vh;
+  background-color: #2C2F35;
   overflow: scroll;
+  font-family: Helvetica;
 }
 
 .clocks-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
   overflow: hidden;
+}
+
+.clocks-option{
+  text-align: center;
+  padding: 1rem;
 }
 
 .clock-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  color: goldenrod;
+
 }
 
 .clock-tokens{
     margin-bottom: 0.5rem;
+    color: white;
 }
 
 .watch-img {
   width: 158px;
 }
 
-.dollar-icon {
-  width: 15px;
-  height: 15px;
+.upgrade-paws-icon {
+  font-size: 20px !important;
+  margin-right: 5px;
 }
 
 .clocks-option button {
   padding: 0.5rem 2.5rem;
   margin-bottom: 2rem;
+}
+
+.clock-price{
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

@@ -1,78 +1,101 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./index.css";
-import { FaHouse } from "react-icons/fa6";
-import { FaClipboardCheck } from "react-icons/fa6";
-import { FaUserGroup } from "react-icons/fa6";
-import { RiTrophyFill } from "react-icons/ri";
-import { PiCoinsFill } from "react-icons/pi";
-import { IoWallet } from "react-icons/io5";
+import TaskIcon from "@mui/icons-material/Task";
+import GroupsIcon from "@mui/icons-material/Groups";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import PaymentIcon from "@mui/icons-material/Payment";
+import HouseIcon from "@mui/icons-material/House";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const getActiveIcon = () => {
+    switch (location.pathname) {
+      case "/home":
+        return "Home";
+      case "/tasks":
+        return "Tasks";
+      case "/frens":
+        return "Buddies";
+      case "/activity":
+        return "Activity";
+      case "/earn":
+        return "Earn";
+      case "/wallet":
+        return "Wallet";
+      default:
+        return "Home";
+    }
+  };
+
+  const activeIcon = getActiveIcon();
+
   return (
     <div>
       <nav>
         <ul className="list">
           <li>
-            <div className="list-item" onClick={() => navigate("/home")}>
-              {/* <img
-                src="https://img-tap-miniapp.chrono.tech/svg/icon-home.svg"
-                alt="tab-icon"
-              /> */}
-              <FaHouse/>
+            <div
+              className={`list-item ${activeIcon === "Home" ? "selected" : ""}`}
+              onClick={() => navigate("/home")}
+            >
+              <HouseIcon />
               Home
             </div>
           </li>
           <li>
-            <div className="list-item" onClick={() => navigate("/tasks")}>
-              {/* <img
-                src="https://img-tap-miniapp.chrono.tech/svg/icon-tasks.svg"
-                alt="tab-icon"
-              /> */}
-              <FaClipboardCheck/>
+            <div
+              className={`list-item ${
+                activeIcon === "Tasks" ? "selected" : ""
+              }`}
+              onClick={() => navigate("/tasks")}
+            >
+              <TaskIcon />
               Tasks
             </div>
           </li>
           <li>
-            <div className="list-item" onClick={() => navigate("/frens")}>
-              {/* <img
-                data-v-84cf6f89=""
-                src="https://img-tap-miniapp.chrono.tech/svg/icon-friends.svg"
-                alt="tab-icon"
-              /> */}
-              <FaUserGroup/>
-              Frens
+            <div
+              className={`list-item ${
+                activeIcon === "Buddies" ? "selected" : ""
+              }`}
+              onClick={() => navigate("/frens")}
+            >
+              <GroupsIcon />
+              Buddies
             </div>
           </li>
-          <li>
-            <div className="list-item" onClick={() => navigate("/activity")}>
-              {/* <img
-                src="https://img-tap-miniapp.chrono.tech/svg/icon-activity.svg"
-                alt="tab-icon"
-              /> */}
-              <RiTrophyFill/>
+          {/* <li>
+            <div
+              className={`list-item ${
+                activeIcon === "Activity" ? "selected" : ""
+              }`}
+              onClick={() => navigate("/activity")}
+            >
+              <EmojiEventsIcon />
               Activity
             </div>
           </li>
           <li>
-            <div className="list-item" onClick={() => navigate("/earn")}>
-              {/* <img
-                src="https://img-tap-miniapp.chrono.tech/svg/ph_coins-fill.svg"
-                alt="tab-icon"
-              /> */}
-              <PiCoinsFill/>
+            <div
+              className={`list-item ${activeIcon === "Earn" ? "selected" : ""}`}
+              onClick={() => navigate("/earn")}
+            >
+              <MonetizationOnIcon />
               Earn
             </div>
-          </li>
+          </li> */}
           <li>
-            <div className="list-item" onClick={() => navigate("/wallet")}>
-              {/* <img
-                data-v-84cf6f89=""
-                src="https://img-tap-miniapp.chrono.tech/svg/icon-wallet.svg"
-                alt="tab-icon"
-              /> */}
-              <IoWallet/>
+            <div
+              className={`list-item ${
+                activeIcon === "Wallet" ? "selected" : ""
+              }`}
+              onClick={() => navigate("/wallet")}
+            >
+              <PaymentIcon />
               Wallet
             </div>
           </li>
@@ -81,4 +104,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;

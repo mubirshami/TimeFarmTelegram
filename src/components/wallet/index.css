@@ -1,6 +1,56 @@
 .wallet-container{
     width: auto;
     margin: auto;
-    height: 100%;
-    background-color: #f3f3f3;
+    height: 97vh;
+    background-color: #2C2F35;
+    text-align: center;
+    font-family: Helvetica;
+}
+
+.paws-icon{
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.wallet-heading{
+    font-size: 26px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    padding-top: 1rem;
+    color: white;
+}
+
+.wallet-subheading{
+    font-size: 18px;
+    color: #666;
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    color: white;
+}
+
+.wallet-section{
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+
+}
+
+.connect-button{
+    padding: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 1rem;
+    background-color: goldenrod;
+    color: black;
+}
+
+.ton-icon-wallet{
+    margin: 0px 5px 0px 0px;
+}
+
+.arrow-icon-wallet{
+    margin: 0px 0px 0px 25px;
 }

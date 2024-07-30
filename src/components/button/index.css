@@ -1,16 +1,16 @@
 .button {
-  color: white;
-  background-color: blue;
+  color: black;
+  background-color: goldenrod;
   border-radius: 1rem;
   text-align: center;
-  padding: 0.5rem 4rem;
+  padding: 0.5rem 2rem;
   cursor: pointer;
-  border-color: blue;
+  border: 1px solid black;
   font-weight: bold;
   margin: 1rem;
 }
 
-.button-icon{
+.button-icon {
   height: 15px;
   width: 15px;
 }

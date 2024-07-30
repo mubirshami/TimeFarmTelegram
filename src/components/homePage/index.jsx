@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import Navbar from "../navbar";
 import { useNavigate } from "react-router-dom";
-import HomeImage from "../../assets/Telegram Bot Welcome page.jpg";
+import HomeImage from "../../assets/Welcome page.png";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Icon } from "@mui/material";
+import BoltIcon from '@mui/icons-material/Bolt';
+import PetsIcon from "@mui/icons-material/Pets";
 
 const HomePage = () => {
   const [time, setTime] = useState(4 * 60 * 60);
@@ -38,18 +42,11 @@ const HomePage = () => {
     <div className="farming-timer-container">
       <div className="top-icons">
         <div className="profile">
-          <img
-            src="https://img-tap-miniapp.chrono.tech/avatars/user-3-80.png"
-            alt="Avatar"
-            srcset="https://img-tap-miniapp.chrono.tech/avatars/user-3-180.png 2x"
-          />
+          <Icon className="profile-icon" component={AccountCircleIcon} />
         </div>
         <div className="upgrade-translate">
-          <div className="upgrade-button" onClick={() => navigate("/upgrade") }>
-            <img
-              src="https://img-tap-miniapp.chrono.tech/svg/bxs_zap.svg"
-              alt="lightning"
-            />
+          <div className="upgrade-button" onClick={() => navigate("/upgrade")}>
+            <Icon className="upgrade-icon" component={BoltIcon} />
             Upgrade
           </div>
           <div className="planet">
@@ -60,27 +57,22 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <h1 className="money">$110,000</h1>
-      {!isFarming ? (
-        <button className="start-button" onClick={handleStartFarming}>
-          Start Farming
-        </button>
-      ) : (
-        <>
-          <div className="hourglass-container">
+      <h1 className="money"><PetsIcon className="heading-paws-icon"/>110,000</h1>
+      <div className="hourglass-container">
             <img
               src={HomeImage}
               alt="Welcome Dawg"
               className="welcome-dawg-image"
             />
           </div>
+      {!isFarming ? (
+        <button className="start-button" onClick={handleStartFarming}>
+          Start Farming
+        </button>
+      ) : (
+        <>
           <div className="farming-info">
-            <p>Farming: ${farming}</p>
-            <img
-              data-v-daf5de16=""
-              src="https://img-tap-miniapp.chrono.tech/svg/oi_dollar_white.svg"
-              alt="oi_dollar"
-            ></img>
+            <p>Farming:<PetsIcon className="home-paws-icon"/>{farming}</p>
             <p>{formatTime(time)}</p>
           </div>
         </>

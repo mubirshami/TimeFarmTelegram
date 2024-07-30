@@ -1,9 +1,15 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
 .farming-timer-container{
     width: auto;
     margin: auto;
     height: 97vh;
-    background-color: #f3f3f3;
+    background-color: #2C2F35;
     text-align: center;
+    font-family: Helvetica;
 }
 .top-icons{
     display: flex;
@@ -29,15 +35,23 @@
     align-items: center;
     margin-right: 0.75rem;
     border-radius: 1em;
-    border: 1px solid blue;
-    background-color: blue;
-    color: white;
-    padding: 0.5rem 0.75rem;
+    border: 1px solid black;
+    background-color: goldenrod;
+    color: black;
+    padding: 0.25rem 0.5rem;
     cursor: pointer;
+}
+.start-button{
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  padding: 0.5rem;
+  color: black;
+  background: goldenrod;
+  cursor: pointer;
 }
 
 .welcome-dawg-image{
-    width: 175px;
+    width: 200px;
 }
 
 .farming-info{
@@ -46,23 +60,29 @@
     font-size: 22px;
     font-weight: bold;
     padding: 3rem;
+    color: goldenrod;
 }
 
-@keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  
-  .loading-animation {
-    animation: fadeOut 2s forwards;
-  }
-  
-  .game-loading-image {
-    width: 100%;
-    max-width: 200px;
-  }
-  
+.profile-icon{
+  font-size: 50px !important;
+  color: goldenrod;
+}
+
+.upgrade-icon{
+  font-size: 30px !important;
+  color: black;
+}
+
+.money{
+  color: white;
+}
+
+.home-paws-icon{
+  font-size: 18px !important;
+  margin: 0px 5px;
+}
+
+.heading-paws-icon{
+  font-size: 20px !important;
+  margin: 0px 5px;
+}

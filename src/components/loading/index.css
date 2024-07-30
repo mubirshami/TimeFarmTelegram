@@ -8,11 +8,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f3f3f3;
-    animation: fadeOut 2s forwards;
+    background-color: #2C2F35;
+    animation: fadeOut 3s forwards;
   }
   
   .game-loading-image {
-    width: 150px;
+    width: 100%;
+    height: 100%;
   }
   

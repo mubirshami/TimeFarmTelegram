@@ -1,21 +1,24 @@
 .frens-container{
     width: auto;
     margin: auto;
-    height: 100%;
-    background-color: #f3f3f3;
+    height: 97vh;
+    background-color: #2C2F35;
     text-align: center;
+    font-family: Helvetica;
 }
 
 .frens-heading{
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
-    padding-top: 2rem;
+   padding-top: 2rem;
+    color: white;
 }
 
 .frens-description{
-    font-size: 16px;
+    font-size: 18px;
     color: #666;
-    padding: 1rem 4rem;
+    padding: 1rem;
+    color: white;
 }
 
 .image-section{
@@ -30,6 +33,59 @@
 }
 
 .frens-image{
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 125px;
+    max-height: 125px;
+    border: 1px solid black;
+    border-radius: 1rem;
 }
+
+/* Add these styles to your index.css or another CSS file */
+.modal {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 1rem;
+    background-color: lightgray;
+    border-radius: 0.5rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .modal.open {
+    transform: translateY(0);
+  }
+  
+  .modal-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease-out;
+  }
+  
+  .modal-overlay.open {
+    opacity: 1;
+  }
+  
+  .modal-overlay.closed {
+    opacity: 0;
+  }
+
+  .modal-popup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .modal-invite-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 22px;
+  }

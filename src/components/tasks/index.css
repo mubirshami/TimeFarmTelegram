@@ -1,53 +1,84 @@
 .task-list-container {
-    width: auto;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  .tabs {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .tab {
-    flex: 1;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-  }
-  
-  .tab.selected {
-    background-color: #fff;
-    border-bottom: none;
-    font-weight: bold;
-  }
-  
-  .tasks {
-    border: 1px solid #ddd;
-    padding: 10px;
-    background-color: #fff;
-  }
-  
-  .task {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .task-action {
-    background-color: orange;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    color: white;
-    border-radius: 5px;
-  }
-  
-  .task-action:hover {
-    background-color: darkorange;
-  }
-  
+  width: auto;
+  margin: auto;
+  height: 97vh;
+  background-color: #2C2F35;
+  text-align: center;
+  color: white;
+  font-family: Helvetica;
+}
+
+.task-top {
+  padding: 20px 0;
+}
+
+.task-heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.task-sub-heading {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.task-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.task-tab {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.task-tab.active {
+  background-color: #777;
+}
+
+.task-content {
+  padding: 20px;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.task-desc {
+  flex: 1;
+  text-align: left;
+}
+
+.task-reward {
+  flex: 1;
+}
+
+.task-start-button {
+  background-color: orange;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.completed-message {
+  padding: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+}

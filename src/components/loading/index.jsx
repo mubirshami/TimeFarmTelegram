@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import GameLoadingImage from "../../assets/Game loading page image.jpg";
+import GameLoadingImage from "../../assets/Loading page.png";
 import "./index.css";
 
 const LoadingAnimation = () => {
   useEffect(() => {
     const loadingTimer = setTimeout(() => {
       document.getElementById("navigate-to-home").click();
-    }, 2000); 
+    }, 3000); 
     return () => clearTimeout(loadingTimer);
   }, []);
 
@@ -16,8 +16,8 @@ const LoadingAnimation = () => {
     <motion.div
       className="loading-animation"
       initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ duration: 2 }}
+      animate={{ opacity: 0.5 }}
+      transition={{ duration: 3 }}
     >
       <img
         src={GameLoadingImage}
