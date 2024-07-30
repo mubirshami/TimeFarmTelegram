@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import Navbar from "../navbar";
 import "./index.css";
 import Button from "../button";
-import frensImg from "../../assets/group-photo.png";
+import frensImg from "../../assets/buddies.png";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Frens = () => {
@@ -26,7 +26,7 @@ const Frens = () => {
         for each invite, while your friend receives 30,000!
       </div>
       <div className="image-section">
-        <img className="frens-img" src={frensImg} />
+        <img className="buddies-image" src={frensImg} />
       </div>
       <div className="invite-button">
         <Button text="Invite A Buddy" onClick={openModal} />

@@ -32,11 +32,9 @@
     padding: 1rem;
 }
 
-.frens-image{
+.buddies-image{
     max-width: 125px;
     max-height: 125px;
-    border: 1px solid black;
-    border-radius: 1rem;
 }
 
 /* Add these styles to your index.css or another CSS file */
