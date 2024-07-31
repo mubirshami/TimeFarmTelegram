@@ -9,17 +9,26 @@ import BoltIcon from '@mui/icons-material/Bolt';
 import PetsIcon from "@mui/icons-material/Pets";
 
 const HomePage = () => {
-  const [time, setTime] = useState(4 * 60 * 60);
-  const [farming, setFarming] = useState(0);
+  const [time, setTime] = useState(6 * 60 * 60);
   const [isFarming, setIsFarming] = useState(false);
+  const [farmingEnded, setFarmingEnded] = useState(false);
   const navigate = useNavigate();
+  const [money, setMoney] = useState(110000);
 
   useEffect(() => {
     let timer;
     if (isFarming) {
       timer = setInterval(() => {
-        setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
-        setFarming((prevFarming) => prevFarming + 1);
+        setTime((prevTime) => {
+          if (prevTime > 0) {
+            return prevTime - 1;
+          } else {
+            setIsFarming(false);
+            setFarmingEnded(true);
+            clearInterval(timer);
+            return 0;
+          }
+        });
       }, 1000);
     }
     return () => clearInterval(timer);
@@ -29,13 +38,18 @@ const HomePage = () => {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = seconds % 60;
-    return `${h.toString().padStart(2, "0")}:${m
-      .toString()
-      .padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
   };
 
   const handleStartFarming = () => {
+    setTime(6 * 60 * 60);
     setIsFarming(true);
+    setFarmingEnded(false);
+  };
+
+  const handleClaimPoints = () => {
+    setMoney((prevMoney) => prevMoney + 100);
+    setFarmingEnded(false);
   };
 
   return (
@@ -57,25 +71,29 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <h1 className="money"><PetsIcon className="heading-paws-icon"/>110,000</h1>
+      <h1 className="money">
+        <PetsIcon className="heading-paws-icon" />
+        {money.toLocaleString()}
+      </h1>
       <div className="hourglass-container">
-            <img
-              src={HomeImage}
-              alt="Welcome Dawg"
-              className="welcome-dawg-image"
-            />
-          </div>
-      {!isFarming ? (
+        <img src={HomeImage} alt="Welcome Dawg" className="welcome-dawg-image" />
+      </div>
+      {!isFarming && !farmingEnded ? (
         <button className="start-button" onClick={handleStartFarming}>
           Start Farming
         </button>
       ) : (
         <>
           <div className="farming-info">
-            <p>Farming:<PetsIcon className="home-paws-icon"/>{farming}</p>
+            <p>Farming:<PetsIcon className="heading-paws-icon"/></p>
             <p>{formatTime(time)}</p>
           </div>
         </>
+      )}
+      {farmingEnded && (
+        <button className="claim-button" onClick={handleClaimPoints}>
+          Claim 100 Points
+        </button>
       )}
       <Navbar />
     </div>

@@ -82,3 +82,8 @@
   font-size: 18px;
   line-height: 1.5;
 }
+
+.task-reward-icon{
+  font-size: 17px !important;
+  margin-right: 5px;
+}

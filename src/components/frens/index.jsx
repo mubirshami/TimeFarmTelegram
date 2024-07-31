@@ -21,12 +21,19 @@ const Frens = () => {
     <div className="frens-container">
       <div className="frens-heading">My Buddies</div>
       <div className="frens-description">
-        Earn 20% for your direct referrals, 10% for their referrals, then 5%,
-        2.5%, and 1.25% for your fifth-level referrals. Plus earn 15,000 SECOND
-        for each invite, while your friend receives 30,000!
+        <p>2X Farming & Daily Reward = Invite 2 Buddies</p>
+        <p>3X Farming & Daily Reward = Invite 5 Buddies</p>
+        <p>4X Farming & Daily Reward = Invite 25 Buddies</p>
+        <p>5X Farming & Daily Reward = Invite 50 Buddies</p>
+        <p>
+          Note- Refferal income is for only first level direct signup and user
+          will get income only when his referral will login account and complete
+          at least 1 task Bots and fake accounts will not count and can result
+          into account deactivation.
+        </p>
       </div>
       <div className="image-section">
-        <img className="buddies-image" src={frensImg} />
+        <img className="buddies-image" src={frensImg} alt="Buddies"/>
       </div>
       <div className="invite-button">
         <Button text="Invite A Buddy" onClick={openModal} />

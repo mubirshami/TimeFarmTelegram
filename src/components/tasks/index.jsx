@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./index.css";
 import Navbar from "../navbar";
+import PetsIcon from "@mui/icons-material/Pets";
 
 const Tasks = () => {
   const [activeTab, setActiveTab] = useState("Active");
 
   const tasks = [
-    { id: 1, description: "Connect TON wallet", reward: "$250,000" },
-    { id: 2, description: "Join to $NOTAI Channel", reward: "$150,000" },
-    { id: 3, description: "Win Prize with HEXN", reward: "$100,000" },
-    { id: 4, description: "Play monorix", reward: "$100,000" },
-    { id: 5, description: "Follow Mashaverse on X", reward: "$100,000" },
+    { id: 1, description: "Follow our Telegram Chaneel", reward: "5000" },
+    { id: 2, description: "Follow us on X", reward: "5000" },
+    { id: 3, description: "Follow us on YouTube", reward: "5000" },
+    { id: 4, description: "Follow us on Instagram", reward: "5000" }
   ];
 
   return (
@@ -41,7 +41,7 @@ const Tasks = () => {
             {tasks.map((task) => (
               <li key={task.id} className="task-item">
                 <div className="task-desc">{task.description}</div>
-                <div className="task-reward">{task.reward}</div>
+                <div className="task-reward"><PetsIcon className="task-reward-icon"/>{task.reward}</div>
                 <button className="task-start-button">Start</button>
               </li>
             ))}
