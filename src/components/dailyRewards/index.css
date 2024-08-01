@@ -1,0 +1,63 @@
+.daily-rewards-container {
+    width: auto;
+    margin: auto;
+    height: 100vh;
+    background-color: #2C2F35;
+    text-align: center;
+    font-family: Helvetica;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rewards-heading{
+    font-size: 26px;
+    font-weight: bold;
+    padding: 2rem;
+    color: white;
+  }
+
+  .daily-rewards-animation{
+    padding: 2rem;
+  }
+
+  .reward-animation-style{
+    width: 150px;
+  }
+
+  .rewards-section{
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    justify-content: space-between;
+  }
+
+  .reward-item{
+    border-radius: 1rem;
+    color: white;
+    border: 1px solid lightgray;
+    padding: 1rem;
+  }
+.reward-icon{
+    padding: 0.25rem;
+    color: goldenrod;
+}
+  .reward-amount{
+    padding: 0.25rem;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .reward-label{
+    padding: 0.25rem;
+    font-size: 16px;
+    color: lightgray;
+  }
+
+.reward-bottom-text{
+    padding: 1rem;
+    color: white;
+}
+
+
+  
+  

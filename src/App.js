@@ -14,6 +14,7 @@ import Upgrade from "./components/upgrade";
 import Activity from "./components/activity";
 import Rules from "./components/rules";
 import LoadingAnimation from "./components/loading";
+import DailyRewards from "./components/dailyRewards";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/upgrade" element={<Upgrade />} />
           <Route path="/activity" element={<Activity />} />
           <Route path="/rules" element={<Rules />} />
+          <Route path="/daily-rewards" element={<DailyRewards />} />
         </Routes>
       </Router>
     </div>
