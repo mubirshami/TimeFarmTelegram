@@ -46,7 +46,7 @@ const Frens = () => {
         overlayClassName={`modal-overlay ${modalIsOpen ? "open" : "closed"}`}
       >
         <div className="modal-invite-heading">
-          <div className="modal-invite-heading">Invite Buddies</div>
+          <div >Invite Buddies</div>
           <CloseIcon className="modal-close-icon" onClick={closeModal} />
         </div>
         <div className="modal-popup">

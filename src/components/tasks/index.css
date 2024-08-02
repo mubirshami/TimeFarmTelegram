@@ -2,7 +2,7 @@
   width: auto;
   margin: auto;
   height: 97vh;
-  background-color: #2C2F35;
+  background-color: #2c2f35;
   text-align: center;
   color: white;
   font-family: Helvetica;
@@ -83,7 +83,100 @@
   line-height: 1.5;
 }
 
-.task-reward-icon{
+.task-reward-icon {
   font-size: 17px !important;
   margin-right: 5px;
+}
+
+/* Modal CSS */
+.modal-task {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 1rem;
+  background-color: lightgray;
+  border-radius: 0.5rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.modal-overlay-task {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease-out;
+}
+
+.modal-task.open {
+  transform: translateY(0);
+}
+
+.modal-overlay-task.open {
+  opacity: 1;
+}
+
+.modal-overlay-task.closed {
+  opacity: 0;
+}
+
+.modal-content-task {
+  padding: 1rem;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-start-button {
+  background-color: orange;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.modal-task-reward {
+  margin-top: 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-task-reward-icon {
+  font-size: 17px !important;
+  margin-right: 5px;
+}
+
+.claim-button {
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.modal-task-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 22px;
 }

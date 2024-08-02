@@ -36,15 +36,9 @@
 
 }
 
-.connect-button{
-    padding: 0.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.wallet-connect-button button{
     border: 1px solid black;
-    border-radius: 1rem;
-    background-color: goldenrod;
-    color: black;
+    background: goldenrod;
 }
 
 .ton-icon-wallet{

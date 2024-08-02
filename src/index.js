@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
-
+const url = process.env.REACT_APP_MANIFEST_URL;
+ console.log(url)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <TonConnectUIProvider manifestUrl={url}>
     <App />
-  </React.StrictMode>
+  </TonConnectUIProvider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
