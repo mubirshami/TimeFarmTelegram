@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/TimeFarmTelegram/static/css/main.fdb663e3.css",
-    "main.js": "/TimeFarmTelegram/static/js/main.7da4b338.js",
+    "main.css": "/TimeFarmTelegram/static/css/main.aff36d96.css",
+    "main.js": "/TimeFarmTelegram/static/js/main.0d225e38.js",
     "static/media/Loading page.png": "/TimeFarmTelegram/static/media/Loading page.9d514f3a798ba7a076e3.png",
     "static/media/Welcome page.png": "/TimeFarmTelegram/static/media/Welcome page.cc8dafc409d1a9db2ea8.png",
+    "static/media/animation.gif": "/TimeFarmTelegram/static/media/animation.a05ee4f57d58ada52eb2.gif",
     "static/media/Level_02.png": "/TimeFarmTelegram/static/media/Level_02.84d4c6b3386fe24d78b4.png",
     "static/media/Level_05.png": "/TimeFarmTelegram/static/media/Level_05.7b79f9190a83e577b739.png",
     "static/media/Level_04.png": "/TimeFarmTelegram/static/media/Level_04.04b84bb3e4d566820a47.png",
@@ -12,11 +13,11 @@
     "static/media/buddies.png": "/TimeFarmTelegram/static/media/buddies.89daf41240c5d3d5819c.png",
     "static/media/paws.png": "/TimeFarmTelegram/static/media/paws.d97c87c1da86d38611c1.png",
     "index.html": "/TimeFarmTelegram/index.html",
-    "main.fdb663e3.css.map": "/TimeFarmTelegram/static/css/main.fdb663e3.css.map",
-    "main.7da4b338.js.map": "/TimeFarmTelegram/static/js/main.7da4b338.js.map"
+    "main.aff36d96.css.map": "/TimeFarmTelegram/static/css/main.aff36d96.css.map",
+    "main.0d225e38.js.map": "/TimeFarmTelegram/static/js/main.0d225e38.js.map"
   },
   "entrypoints": [
-    "static/css/main.fdb663e3.css",
-    "static/js/main.7da4b338.js"
+    "static/css/main.aff36d96.css",
+    "static/js/main.0d225e38.js"
   ]
 }
