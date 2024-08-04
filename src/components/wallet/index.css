@@ -1,4 +1,4 @@
-.wallet-container{
+.wallet-container {
     width: auto;
     margin: auto;
     height: 97vh;
@@ -7,13 +7,13 @@
     font-family: Helvetica;
 }
 
-.paws-icon{
+.paws-icon {
     padding: 1rem;
     justify-content: center;
     align-items: center;
 }
 
-.wallet-heading{
+.wallet-heading {
     font-size: 26px;
     font-weight: bold;
     font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
     color: white;
 }
 
-.wallet-subheading{
+.wallet-subheading {
     font-size: 18px;
     color: #666;
     font-family: Arial, sans-serif;
@@ -29,22 +29,55 @@
     color: white;
 }
 
-.wallet-section{
+.wallet-section {
     display: flex;
     padding: 2rem;
     justify-content: center;
-
+    flex-direction: column; /* Added to stack items vertically */
 }
 
-.wallet-connect-button button{
+.wallet-connect-button button {
     border: 1px solid black;
     background: goldenrod;
 }
 
-.ton-icon-wallet{
-    margin: 0px 5px 0px 0px;
+.wallet-details {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #1D1F21;
+    border-radius: 8px;
+    color: white;
 }
 
-.arrow-icon-wallet{
-    margin: 0px 0px 0px 25px;
+.wallet-detail-item {
+    font-size: 18px;
+    margin: 0.5rem 0;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.wallet-avatar {
+    margin: 1rem 0;
+}
+
+.wallet-avatar img {
+    border-radius: 50%;
+}
+
+.wallet-about {
+    margin-top: 1rem;
+}
+
+.wallet-about a {
+    color: goldenrod;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+.wallet-about a:hover {
+    text-decoration: underline;
+}
+
+.navbar {
+    margin-top: 2rem;
 }
