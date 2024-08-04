@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
-const url ='https://github.com/mubirshami/TimeFarmTelegram/blob/main/public/tonconnect-manifest.json'
+const url = 'https://raw.githubusercontent.com/mubirshami/TimeFarmTelegram/main/public/tonconnect-manifest.json';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
