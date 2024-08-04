@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
-const url = process.env.REACT_APP_MANIFEST_URL;
- console.log(url)
+const url ='https://github.com/mubirshami/TimeFarmTelegram/blob/main/tonconnect-manifest.json'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <TonConnectUIProvider manifestUrl={url}>
