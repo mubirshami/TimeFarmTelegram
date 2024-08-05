@@ -5,6 +5,7 @@
   background-color: #2c2f35;
   text-align: center;
   color: white;
+  overflow: scroll;
   font-family: Helvetica;
 }
 
@@ -26,6 +27,7 @@
   display: flex;
   justify-content: center;
   margin: 15px 0;
+  overflow: hidden;
 }
 
 .task-tab {

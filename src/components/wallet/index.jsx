@@ -7,6 +7,8 @@ import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 const Wallet = () => {
   const wallet = useTonWallet();
 
+  console.log(wallet);
+
   return (
     <div className="wallet-container">
       <div className="paws-icon">
@@ -32,10 +34,12 @@ const Wallet = () => {
         <div className="wallet-details">
           <div className="wallet-section">
             <div className="wallet-detail-item">
-              <strong>Public Key:</strong> {wallet.account.publicKey}
+              <strong>Public Key:</strong>{" "}
+              <span className="wallet-public-key">{wallet.account.publicKey}</span>
             </div>
             <div className="wallet-detail-item">
-              <strong>Balance:</strong> {wallet.balance} TON
+              <strong>Balance:</strong>
+              <span className="wallet-balance">{wallet.balance} TON</span>
             </div>
           </div>
         </div>
