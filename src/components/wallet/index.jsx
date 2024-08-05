@@ -37,10 +37,10 @@ const Wallet = () => {
               <strong>Public Key:</strong>{" "}
               <span className="wallet-public-key">{wallet.account.publicKey}</span>
             </div>
-            <div className="wallet-detail-item">
+            {/* <div className="wallet-detail-item">
               <strong>Balance:</strong>
               <span className="wallet-balance">{wallet.balance} TON</span>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
