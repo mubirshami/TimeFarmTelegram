@@ -33,7 +33,7 @@
     display: flex;
     padding: 2rem;
     justify-content: center;
-    flex-direction: column; /* Added to stack items vertically */
+    flex-direction: column; 
 }
 
 .wallet-connect-button button {
@@ -42,7 +42,6 @@
 }
 
 .wallet-details {
-    margin-top: 2rem;
     padding: 2rem;
     background-color: #2C2F35;
     border-radius: 8px;
@@ -51,33 +50,6 @@
 
 .wallet-detail-item {
     font-size: 18px;
-    margin: 0.5rem 0;
     color: white;
     font-family: Arial, sans-serif;
-}
-
-.wallet-avatar {
-    margin: 1rem 0;
-}
-
-.wallet-avatar img {
-    border-radius: 50%;
-}
-
-.wallet-about {
-    margin-top: 1rem;
-}
-
-.wallet-about a {
-    color: goldenrod;
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-}
-
-.wallet-about a:hover {
-    text-decoration: underline;
-}
-
-.navbar {
-    margin-top: 2rem;
 }
