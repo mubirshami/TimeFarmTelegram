@@ -3,8 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./index.css";
 import TaskIcon from "@mui/icons-material/Task";
 import GroupsIcon from "@mui/icons-material/Groups";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import PaymentIcon from "@mui/icons-material/Payment";
 import HouseIcon from "@mui/icons-material/House";
 

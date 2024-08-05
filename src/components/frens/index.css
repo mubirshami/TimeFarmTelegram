@@ -10,14 +10,14 @@
 .frens-heading{
     font-size: 26px;
     font-weight: bold;
-   padding-top: 1rem;
+   padding-top: 0.5rem;
     color: white;
 }
 
 .frens-description{
-    font-size: 16px;
+    font-size: 14px;
     color: #666;
-    padding: 0.5rem;
+    padding: 0.25rem;
     color: white;
 }
 
@@ -25,16 +25,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 2rem;
+    padding: 0.25rem 2rem;
 }
 
 .invite-button{
-    padding: 0.5rem;
+    padding: 0.25rem;
 }
 
 .buddies-image{
-    max-width: 125px;
-    max-height: 125px;
+    max-width: 80px;
+    max-height: 80px;
 }
 
 /* Add these styles to your index.css or another CSS file */

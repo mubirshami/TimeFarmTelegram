@@ -5,7 +5,11 @@ import PetsIcon from "@mui/icons-material/Pets";
 import "./index.css";
 import Button from "../button";
 import CloseIcon from "@mui/icons-material/Close";
-
+import TelegramIcon from "../../assets/telegram-icon.png";
+import XIcon from "../../assets/x-icon.png";
+import YouTubeIcon from "../../assets/youtube-icon.png";
+import InstaIcon from "../../assets/insta-icon.png";
+import WalletIcon from "../../assets/wallet-icon.png";
 
 const Tasks = () => {
   const [activeTab, setActiveTab] = useState("Active");
@@ -14,10 +18,11 @@ const Tasks = () => {
   const [taskDone, setTaskDone] = useState(false);
 
   const tasks = [
-    { id: 1, description: "Follow our Telegram Channel", reward: "5000", url:"https://telegram.org/" },
-    { id: 2, description: "Follow us on X", reward: "5000", url:"https://twitter.com/?lang=en" },
-    { id: 3, description: "Follow us on YouTube", reward: "5000",  url:"https://www.youtube.com/" },
-    { id: 4, description: "Follow us on Instagram", reward: "5000", url:"https://www.instagram.com/" },
+    { id: 1, description: "Follow our Telegram Channel", reward: "5000", url:"https://telegram.org/",pic:TelegramIcon },
+    { id: 2, description: "Follow us on X", reward: "5000", url:"https://twitter.com/?lang=en", pic:XIcon },
+    { id: 3, description: "Follow us on YouTube", reward: "5000",  url:"https://www.youtube.com/",pic:YouTubeIcon },
+    { id: 4, description: "Follow us on Instagram", reward: "5000", url:"https://www.instagram.com/", pic:InstaIcon },
+    { id: 5, description: "Connect your wallet", reward: "5000", url:"https://telegram.org/",pic:WalletIcon },
   ];
 
   const handleStartTask = (task) => {
@@ -69,6 +74,7 @@ const Tasks = () => {
           <ul className="task-list">
             {tasks.map((task) => (
               <li key={task.id} className="task-item">
+                <img src={task.pic} alt="icon" className="task-icon"/>
                 <div className="task-desc">{task.description}</div>
                 <div className="task-reward"><PetsIcon className="task-reward-icon"/>{task.reward}</div>
                 <button className="task-start-button" onClick={() => handleStartTask(task)}>Start</button>
