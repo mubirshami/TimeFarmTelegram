@@ -1,93 +1,153 @@
-.frens-container{
-    width: auto;
-    margin: auto;
-    height: 97vh;
-    background-color: #2C2F35;
-    text-align: center;
-    font-family: Helvetica;
+.frens-container {
+  width: auto;
+  margin: auto;
+  height: 97vh;
+  background-color: #2C2F35;
+  text-align: center;
+  font-family: Helvetica;
 }
 
-.frens-heading{
-    font-size: 26px;
-    font-weight: bold;
-   padding-top: 0.5rem;
-    color: white;
+.frens-heading {
+  font-size: 26px;
+  font-weight: bold;
+  padding-top: 0.5rem;
+  color: white;
 }
 
-.frens-description{
-    font-size: 14px;
-    color: #666;
-    padding: 0.25rem;
-    color: white;
+.frens-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  overflow: scroll;
 }
 
-.image-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.25rem 2rem;
+.frens-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #3A3D45;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  width: 80%;
 }
 
-.invite-button{
-    padding: 0.25rem;
+.frens-item-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.buddies-image{
-    max-width: 80px;
-    max-height: 80px;
+.invite-frens-icon {
+  font-size: 15px !important;
+  color: goldenrod;
 }
 
-/* Add these styles to your index.css or another CSS file */
+.frens-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.frens-text {
+  flex-grow: 1;
+  color: white;
+}
+
+.invite-frens-item-heading {
+  padding-bottom: 0.25rem;
+  margin-right: 1.5rem;
+}
+
+.invite-frens-item-desc {
+  margin-right: 4.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: #555;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #FF8C00;
+  border-radius: 4px;
+}
+
+.frens-claim-button {
+  background-color: #FF8C00;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.invite-button {
+  padding: 0.25rem;
+}
+
+.buddies-image {
+  max-width: 80px;
+  max-height: 80px;
+}
+
 .modal {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-width: 100%;
-    max-height: 100%;
-    padding: 1rem;
-    background-color: lightgray;
-    border-radius: 0.5rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    transform: translateY(100%);
-    transition: transform 0.3s ease-out;
-  }
-  
-  .modal.open {
-    transform: translateY(0);
-  }
-  
-  .modal-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    transition: opacity 0.3s ease-out;
-  }
-  
-  .modal-overlay.open {
-    opacity: 1;
-  }
-  
-  .modal-overlay.closed {
-    opacity: 0;
-  }
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 1rem;
+  background-color: lightgray;
+  border-radius: 0.5rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
 
-  .modal-popup{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+.modal.open {
+  transform: translateY(0);
+}
 
-  .modal-invite-heading{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-    font-size: 22px;
-  }
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease-out;
+}
 
-  .modal-close-icon{
-    cursor: pointer;
-  }
+.modal-overlay.open {
+  opacity: 1;
+}
+
+.modal-overlay.closed {
+  opacity: 0;
+}
+
+.modal-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-invite-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.modal-close-icon {
+  cursor: pointer;
+}

@@ -5,6 +5,7 @@ import "./index.css";
 import Button from "../button";
 import frensImg from "../../assets/buddies.png";
 import CloseIcon from "@mui/icons-material/Close";
+import PetsIcon from "@mui/icons-material/Pets";
 
 const Frens = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -20,20 +21,72 @@ const Frens = () => {
   return (
     <div className="frens-container">
       <div className="frens-heading">My Buddies</div>
-      <div className="frens-description">
-        <p>2X Farming & Daily Reward = Invite 2 Buddies</p>
-        <p>3X Farming & Daily Reward = Invite 5 Buddies</p>
-        <p>4X Farming & Daily Reward = Invite 25 Buddies</p>
-        <p>5X Farming & Daily Reward = Invite 50 Buddies</p>
-        <p>
-          Note- Refferal income is for only first level direct signup and user
-          will get income only when his referral will login account and complete
-          at least 1 task Bots and fake accounts will not count and can result
-          into account deactivation.
-        </p>
-      </div>
-      <div className="image-section">
-        <img className="buddies-image" src={frensImg} alt="Buddies"/>
+      <div className="frens-list">
+        <div className="frens-item">
+          <div className="frens-item-section">
+            <img src={frensImg} alt="Friend 1" className="frens-icon" />
+            <div className="frens-text">
+              <div className="invite-frens-item-heading">Invite 3 Friends</div>
+              <div className="invite-frens-item-desc">
+                <PetsIcon className="invite-frens-icon" />
+                50,000
+              </div>
+            </div>
+            <button className="frens-claim-button">Claim</button>
+          </div>
+          <div className="progress-bar-container">
+            <div className="progress-bar" style={{ width: "33%" }}></div>
+          </div>
+        </div>
+        <div className="frens-item">
+          <div className="frens-item-section">
+            <img src={frensImg} alt="Friend 1" className="frens-icon" />
+            <div className="frens-text">
+              <div className="invite-frens-item-heading">Invite 10 Friends</div>
+              <div className="invite-frens-item-desc">
+                <PetsIcon className="invite-frens-icon" />
+                200,000
+              </div>
+            </div>
+            <button className="frens-claim-button">Claim</button>
+          </div>
+          <div className="progress-bar-container">
+            <div className="progress-bar" style={{ width: "10%" }}></div>
+          </div>
+        </div>
+        <div className="frens-item">
+          <div className="frens-item-section">
+            <img src={frensImg} alt="Friend 3" className="frens-icon" />
+            <div className="frens-text">
+              <div className="invite-frens-item-heading">Invite 25 Friends</div>
+              <div className="invite-frens-item-desc">
+                <PetsIcon className="invite-frens-icon" />
+                250,000
+              </div>
+            </div>
+            <button className="frens-claim-button">Claim</button>
+          </div>
+
+          <div className="progress-bar-container">
+            <div className="progress-bar" style={{ width: "4%" }}></div>
+          </div>
+        </div>
+        <div className="frens-item">
+          <div className="frens-item-section">
+            <img src={frensImg} alt="Friend 1" className="frens-icon" />
+            <div className="frens-text">
+              <div className="invite-frens-item-heading">Invite 50 Friends</div>
+              <div className="invite-frens-item-desc">
+                <PetsIcon className="invite-frens-icon" />
+                300,000
+              </div>
+            </div>
+            <button className="frens-claim-button">Claim</button>
+          </div>
+          <div className="progress-bar-container">
+            <div className="progress-bar" style={{ width: "2%" }}></div>
+          </div>
+        </div>
       </div>
       <div className="invite-button">
         <Button text="Invite A Buddy" onClick={openModal} />
@@ -46,7 +99,7 @@ const Frens = () => {
         overlayClassName={`modal-overlay ${modalIsOpen ? "open" : "closed"}`}
       >
         <div className="modal-invite-heading">
-          <div >Invite Buddies</div>
+          <div>Invite Buddies</div>
           <CloseIcon className="modal-close-icon" onClick={closeModal} />
         </div>
         <div className="modal-popup">
