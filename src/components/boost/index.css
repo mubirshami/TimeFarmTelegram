@@ -1,0 +1,33 @@
+.boost-container {
+  width: auto;
+  margin: auto;
+  height: 97vh;
+  background-color: black;
+  text-align: center;
+  font-family: Helvetica;
+}
+
+.coming-soon-bolt{
+    padding-top: 2rem;
+}
+
+.coming-soon-second-bolt{
+    padding-bottom: 2rem;
+}
+
+.boost-image-style{
+    max-width: 100px;
+}
+
+.animation-description{
+    padding: 0.5rem 1rem;
+    font-size: 22px;
+    font-weight: bolder;
+    font-family: Arial, sans-serif;
+    color: goldenrod;
+}
+
+.boost-animation-style{
+    max-width: 300px;
+    padding: 1.5rem;
+}

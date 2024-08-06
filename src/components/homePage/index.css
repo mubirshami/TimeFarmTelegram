@@ -7,7 +7,11 @@ body{
     width: auto;
     margin: auto;
     height: 97vh;
-    background-color: #2C2F35;
+    /* background-color: #2C2F35; */
+    background-image: url('../../assets/background1.jpg');
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
     text-align: center;
     font-family: Helvetica;
 }

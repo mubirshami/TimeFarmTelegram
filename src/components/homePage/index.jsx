@@ -59,9 +59,9 @@ const HomePage = () => {
           <Icon className="profile-icon" component={AccountCircleIcon} />
         </div>
         <div className="upgrade-translate">
-          <div className="upgrade-button" onClick={() => navigate("/upgrade")}>
+          <div className="upgrade-button" onClick={() => navigate("/boost")}>
             <Icon className="upgrade-icon" component={BoltIcon} />
-            Upgrade
+            Boost
           </div>
           <div className="planet">
             <select name="language" id="language">

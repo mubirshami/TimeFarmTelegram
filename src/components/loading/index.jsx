@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import GameLoadingImage from "../../assets/Loading page.png";
+import StartingImage from "../../assets/Sheepdawg Golden.png";
 import "./index.css";
 
 const LoadingAnimation = () => {
@@ -20,7 +20,7 @@ const LoadingAnimation = () => {
       transition={{ duration: 3 }}
     >
       <img
-        src={GameLoadingImage}
+        src={StartingImage}
         alt="Game Loading"
         className="game-loading-image"
       />

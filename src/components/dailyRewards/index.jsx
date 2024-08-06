@@ -8,10 +8,6 @@ import PetsIcon from "@mui/icons-material/Pets";
 const DailyRewards = () => {
   const [dayNumber, setDayNumber] = useState(35);
 
-  const handleVideoError = (event) => {
-    console.error('Error loading video:', event);
-  };
-
   return (
     <div className="daily-rewards-container">
       <div className="daily-rewards-animation">
