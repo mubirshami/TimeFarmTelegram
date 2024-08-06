@@ -20,6 +20,7 @@
   align-items: center;
   padding: 1rem;
   overflow: scroll;
+  height: 50%;
 }
 
 .frens-item {
