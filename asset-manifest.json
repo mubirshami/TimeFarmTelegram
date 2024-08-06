@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/TimeFarmTelegram/static/css/main.77df27f7.css",
-    "main.js": "/TimeFarmTelegram/static/js/main.ed96a149.js",
-    "static/media/Loading page.png": "/TimeFarmTelegram/static/media/Loading page.9d514f3a798ba7a076e3.png",
+    "main.css": "/TimeFarmTelegram/static/css/main.675f3486.css",
+    "main.js": "/TimeFarmTelegram/static/js/main.41652db8.js",
+    "static/media/coming-soon-animation.gif": "/TimeFarmTelegram/static/media/coming-soon-animation.cde96aa1ba2d2199d3a8.gif",
     "static/media/Welcome page.png": "/TimeFarmTelegram/static/media/Welcome page.cc8dafc409d1a9db2ea8.png",
     "static/media/animation.gif": "/TimeFarmTelegram/static/media/animation.a05ee4f57d58ada52eb2.gif",
+    "static/media/Sheepdawg Golden.png": "/TimeFarmTelegram/static/media/Sheepdawg Golden.269074ad2798f41d9ce0.png",
     "static/media/Level_02.png": "/TimeFarmTelegram/static/media/Level_02.84d4c6b3386fe24d78b4.png",
     "static/media/Level_05.png": "/TimeFarmTelegram/static/media/Level_05.7b79f9190a83e577b739.png",
     "static/media/Level_04.png": "/TimeFarmTelegram/static/media/Level_04.04b84bb3e4d566820a47.png",
@@ -16,14 +17,14 @@
     "static/media/buddies.png": "/TimeFarmTelegram/static/media/buddies.89daf41240c5d3d5819c.png",
     "static/media/paws.png": "/TimeFarmTelegram/static/media/paws.d97c87c1da86d38611c1.png",
     "static/media/telegram-icon.png": "/TimeFarmTelegram/static/media/telegram-icon.28f6fc50e59d1a9a75cb.png",
-    "static/media/background2.jpeg": "/TimeFarmTelegram/static/media/background2.dad807a9e7a3b471350d.jpeg",
+    "static/media/background1.jpg": "/TimeFarmTelegram/static/media/background1.a950e71e6e63218c6707.jpg",
     "static/media/youtube-icon.png": "/TimeFarmTelegram/static/media/youtube-icon.7cedfa3a8bc7d3993313.png",
     "index.html": "/TimeFarmTelegram/index.html",
-    "main.77df27f7.css.map": "/TimeFarmTelegram/static/css/main.77df27f7.css.map",
-    "main.ed96a149.js.map": "/TimeFarmTelegram/static/js/main.ed96a149.js.map"
+    "main.675f3486.css.map": "/TimeFarmTelegram/static/css/main.675f3486.css.map",
+    "main.41652db8.js.map": "/TimeFarmTelegram/static/js/main.41652db8.js.map"
   },
   "entrypoints": [
-    "static/css/main.77df27f7.css",
-    "static/js/main.ed96a149.js"
+    "static/css/main.675f3486.css",
+    "static/js/main.41652db8.js"
   ]
 }
