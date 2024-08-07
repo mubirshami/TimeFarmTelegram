@@ -1,0 +1,59 @@
+.referral-container {
+    width: auto;
+    margin: auto;
+    height: 97vh;
+    background-color: #2C2F35;
+    text-align: center;
+    font-family: Helvetica;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .referral-heading {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .referral-desc {
+    font-size: 14px;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .referral-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .referral-input {
+    width: 80%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .referral-button,
+  .referral-skip-button {
+    background-color: #FF8C00;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0.25rem 0;
+    width: 80%;
+  }
+  
+  .referral-skip-button {
+    background-color: #666;
+  }
+  

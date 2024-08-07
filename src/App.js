@@ -16,15 +16,19 @@ import Rules from "./components/rules";
 import LoadingAnimation from "./components/loading";
 import DailyRewards from "./components/dailyRewards";
 import Boost from "./components/boost";
+import Referral from "./components/referal";
 import UserData from "./components/userData";
+import { ContextProvider } from "./context/useContext";
 
 
 function App() {
   return (
     <div className="App">
+      <ContextProvider>
       <Router basename="/TimeFarmTelegram">
         <Routes >
-          <Route path="/" element={<UserData />} />
+          <Route path="/" element={<LoadingAnimation />} />
+          <Route path="/referral" element={<Referral />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/tasks" element={<Tasks />} />
@@ -42,6 +46,7 @@ function App() {
           <Route path="/boost" element={<Boost />} />
         </Routes>
       </Router>
+      </ContextProvider>
     </div>
   );
 };
