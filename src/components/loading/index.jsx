@@ -21,21 +21,25 @@ const LoadingAnimation = () => {
     tg.expand();
 
     const loadingTimer = setTimeout(() => {
-      checkUserExists();
+      checkUserExists(user);
     }, 5000);
 
     return () => clearTimeout(loadingTimer);
   }, [navigate]);
 
-  const checkUserExists = async() => {
-    const searchUserQuery = query(collection(db, "users"), where("id", "==", user.id));
+  const checkUserExists = async (user) => {
+    console.log("USER", user);
+    const searchUserQuery = query(
+      collection(db, "users"),
+      where("id", "==", user.id)
+    );
     const result = await getDocs(searchUserQuery);
-    console.log("RESULT", result);
-      if (result) {
-        navigate("/home");
-      } else {
-        navigate("/referral");
-      }
+    if (!result.empty) {
+      console.log("User exists");
+      navigate("/home");
+    } else {
+      navigate("/referral");
+    }
   };
 
   return (
