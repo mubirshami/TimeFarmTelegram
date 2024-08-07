@@ -5,6 +5,7 @@ import StartingImage from "../../assets/Sheepdawg Golden.png";
 import "./index.css";
 import { useCtx } from "../../context/useContext";
 import { db } from "../../firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const LoadingAnimation = () => {
   const navigate = useNavigate();
@@ -26,15 +27,15 @@ const LoadingAnimation = () => {
     return () => clearTimeout(loadingTimer);
   }, [navigate]);
 
-  const checkUserExists = () => {
-    const searchUser = db.collection("users").doc(user.id);
-    searchUser.get().then((doc) => {
-      if (doc.exists) {
+  const checkUserExists = async() => {
+    const searchUserQuery = query(collection(db, "users"), where("id", "==", user.id));
+    const result = await getDocs(searchUserQuery);
+    console.log("RESULT", result);
+      if (result) {
         navigate("/home");
       } else {
         navigate("/referral");
       }
-    });
   };
 
   return (
