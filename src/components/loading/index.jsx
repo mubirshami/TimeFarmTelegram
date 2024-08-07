@@ -43,10 +43,8 @@ const LoadingAnimation = () => {
 
       const result = await getDocs(searchUserQuery);
       if (!result.empty) {
-        console.log("User exists");
         navigate("/home");
       } else {
-        console.log("User does not exist");
         await addUserToDatabase(user);
       }
     } catch (error) {
@@ -63,7 +61,6 @@ const LoadingAnimation = () => {
         inviteCount: 0,
         totalSheepDawg: 0
       });
-      console.log("User added to database successfully");
       navigate("/referral");
     } catch (error) {
       console.error("Error adding user to database:", error);

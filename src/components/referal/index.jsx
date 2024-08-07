@@ -36,7 +36,6 @@ const Referral = () => {
         navigate("/home");
       } else {
         setIsCodeCorrect(false);
-        console.log("Referral code does not exist");
       }
     } catch (error) {
       console.error("Error checking referral code:", error);
@@ -53,10 +52,7 @@ const Referral = () => {
         await updateDoc(userRef, {
           inviteCount: currentInviteCount + 1,
         });
-        console.log("Invite count updated successfully.");
-      } else {
-        console.log("No such document exists.");
-      }
+      } 
     } catch (error) {
       console.error("Error incrementing invite count:", error);
     }

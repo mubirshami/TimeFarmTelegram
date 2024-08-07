@@ -5,17 +5,22 @@ import { useNavigate } from "react-router-dom";
 import HomeImage from "../../assets/Welcome page.png";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Icon } from "@mui/material";
-import BoltIcon from '@mui/icons-material/Bolt';
+import BoltIcon from "@mui/icons-material/Bolt";
 import PetsIcon from "@mui/icons-material/Pets";
+import { db } from "../../firebase";
+import { useCtx } from "../../context/useContext";
+import { getDocs, query, where, updateDoc, collection, doc } from "firebase/firestore";
 
 const HomePage = () => {
   const [time, setTime] = useState(6 * 60 * 60);
   const [isFarming, setIsFarming] = useState(false);
   const [farmingEnded, setFarmingEnded] = useState(false);
   const navigate = useNavigate();
-  const [money, setMoney] = useState(110000);
+  const { user, setUser, total, setTotal } = useCtx();
 
   useEffect(() => {
+    console.log("User:", user);
+    getData();
     let timer;
     if (isFarming) {
       timer = setInterval(() => {
@@ -34,11 +39,30 @@ const HomePage = () => {
     return () => clearInterval(timer);
   }, [isFarming]);
 
+  const getData = async () => {
+    try {
+      const userDataQuery = query(
+        collection(db, "users"),
+        where("id", "==", user.id)
+      );
+      const result = await getDocs(userDataQuery);
+      if (!result.empty) {
+        const userData = result.docs[0].data();
+        setTotal(userData.totalSheepDawg);
+      }
+    } catch (error) {
+      console.error("Error getting user data:", error);
+    }
+  };
+
+
   const formatTime = (seconds) => {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = seconds % 60;
-    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+    return `${h.toString().padStart(2, "0")}:${m
+      .toString()
+      .padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
   };
 
   const handleStartFarming = () => {
@@ -47,9 +71,24 @@ const HomePage = () => {
     setFarmingEnded(false);
   };
 
-  const handleClaimPoints = () => {
-    setMoney((prevMoney) => prevMoney + 100);
-    setFarmingEnded(false);
+  const handleClaimPoints = async () => {
+    try {
+      const updateTotalQuery = query(
+        collection(db, "users"),
+        where("id", "==", user.id)
+      );
+      const result = await getDocs(updateTotalQuery);
+      if (!result.empty) {
+        const userDoc = result.docs[0];
+        const userRef = doc(db, "users", userDoc.id);
+        await updateDoc(userRef, {
+          totalSheepDawg: total + 100,
+        });
+      }
+      setFarmingEnded(false);
+    } catch (error) {
+      console.error("Error updating total:", error);
+    }
   };
 
   return (
@@ -73,10 +112,14 @@ const HomePage = () => {
       </div>
       <h1 className="money">
         <PetsIcon className="heading-paws-icon" />
-        {money.toLocaleString()}
+        {total}
       </h1>
       <div className="hourglass-container">
-        <img src={HomeImage} alt="Welcome Dawg" className="welcome-dawg-image" />
+        <img
+          src={HomeImage}
+          alt="Welcome Dawg"
+          className="welcome-dawg-image"
+        />
       </div>
       {!isFarming && !farmingEnded ? (
         <button className="start-button" onClick={handleStartFarming}>
@@ -85,7 +128,10 @@ const HomePage = () => {
       ) : (
         <>
           <div className="farming-info">
-            <p>Farming:<PetsIcon className="heading-paws-icon"/></p>
+            <p>
+              Farming:
+              <PetsIcon className="heading-paws-icon" />
+            </p>
             <p>{formatTime(time)}</p>
           </div>
         </>
