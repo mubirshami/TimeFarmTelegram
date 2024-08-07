@@ -16,6 +16,7 @@ import Rules from "./components/rules";
 import LoadingAnimation from "./components/loading";
 import DailyRewards from "./components/dailyRewards";
 import Boost from "./components/boost";
+import UserData from "./components/userData";
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
     <div className="App">
       <Router basename="/TimeFarmTelegram">
         <Routes >
-          <Route path="/" element={<LoadingAnimation />} />
+          <Route path="/" element={<UserData />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/tasks" element={<Tasks />} />
