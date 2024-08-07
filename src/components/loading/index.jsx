@@ -5,7 +5,7 @@ import StartingImage from "../../assets/Sheepdawg Golden.png";
 import "./index.css";
 import { useCtx } from "../../context/useContext";
 import { db } from "../../firebase";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, addDoc } from "firebase/firestore";
 
 const LoadingAnimation = () => {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ const LoadingAnimation = () => {
 
   const addUserToDatabase = async (user) => {
     try {
-      await db.collection("users").add({
+      await addDoc(collection(db, "users"), {
         id: user.id,
         referralCode: user.id,
         inviteCount: 0,
