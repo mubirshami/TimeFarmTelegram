@@ -47,13 +47,28 @@ const LoadingAnimation = () => {
         navigate("/home");
       } else {
         console.log("User does not exist");
-        navigate("/referral");
+        await addUserToDatabase(user);
       }
     } catch (error) {
       console.error("Error checking user existence:", error);
       navigate("/referral");
     }
   };
+
+  const addUserToDatabase = async (user) => {
+    try {
+      await db.collection("users").add({
+        id: user.id,
+        referralCode: user.id,
+        inviteCount: 0,
+        totalSheepDawg: 0
+      });
+      console.log("User added to database successfully");
+      navigate("/referral");
+    } catch (error) {
+      console.error("Error adding user to database:", error);
+    }
+  }
 
   return (
     <motion.div
