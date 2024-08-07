@@ -14,7 +14,8 @@ const Referral = () => {
   };
 
   const handleSubmit = () => {
-    checkCode(referralCode);
+    const codeAsNumber = Number(referralCode);
+    checkCode(codeAsNumber);
     setReferralCode("");
     setIsCodeCorrect(null);
   };
