@@ -12,38 +12,47 @@ const LoadingAnimation = () => {
   const { user, setUser } = useCtx();
 
   useEffect(() => {
-    const user = getTelegramUser();
-    console.log("TON USER: ", user);
+    const tg = window.Telegram.WebApp;
 
-    const loadingTimer = setTimeout(() => {
-      checkUserExists(user);
-    }, 5000);
+    if (tg.initDataUnsafe) {
+      const telegramUser = tg.initDataUnsafe.user;
+      setUser(telegramUser);
+      tg.expand();
 
-    return () => clearTimeout(loadingTimer);
-  }, [navigate]);
+      const loadingTimer = setTimeout(() => {
+        checkUserExists(telegramUser);
+      }, 5000);
+
+      return () => clearTimeout(loadingTimer);
+    }
+  }, [navigate, setUser]);
 
   const checkUserExists = async (user) => {
     console.log("Function User", user);
+
+    if (!user || !user.id) {
+      console.error("User ID is not available");
+      navigate("/referral");
+      return;
+    }
+
     const searchUserQuery = query(
       collection(db, "users"),
       where("id", "==", user.id)
     );
-    const result = await getDocs(searchUserQuery);
-    if (!result.empty) {
-      console.log("User exists");
-      navigate("/home");
-    } else {
-      navigate("/referral");
-    }
-  };
 
-  const getTelegramUser = async() => {
-    const tg = window.Telegram.WebApp;
-    if (tg.initDataUnsafe) {
-      const user = await tg.initDataUnsafe.user;
-      setUser(user);
-      tg.expand();
-      return user;
+    try {
+      const result = await getDocs(searchUserQuery);
+      if (!result.empty) {
+        console.log("User exists");
+        navigate("/home");
+      } else {
+        console.log("User does not exist");
+        navigate("/referral");
+      }
+    } catch (error) {
+      console.error("Error checking user existence:", error);
+      navigate("/referral");
     }
   };
 
