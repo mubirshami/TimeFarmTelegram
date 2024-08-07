@@ -28,20 +28,19 @@ const LoadingAnimation = () => {
   }, [navigate, setUser]);
 
   const checkUserExists = async (user) => {
-    console.log("Function User", user);
-
+    // Validate user and user.id
     if (!user || !user.id) {
       console.error("User ID is not available");
       navigate("/referral");
       return;
     }
 
-    const searchUserQuery = query(
-      collection(db, "users"),
-      where("id", "==", user.id)
-    );
-
     try {
+      const searchUserQuery = query(
+        collection(db, "users"),
+        where("id", "==", user.id)
+      );
+
       const result = await getDocs(searchUserQuery);
       if (!result.empty) {
         console.log("User exists");
