@@ -15,6 +15,8 @@ const Referral = () => {
 
   const handleSubmit = () => {
     checkCode(referralCode);
+    setReferralCode("");
+    setIsCodeCorrect(null);
   };
 
   const checkCode = async (code) => {
@@ -68,7 +70,7 @@ const Referral = () => {
       </div>
       <div className="referral-input-container">
         <input
-          type="text"
+          type="number"
           placeholder="Enter referral code"
           className="referral-input"
           value={referralCode}
