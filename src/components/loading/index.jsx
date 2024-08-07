@@ -12,13 +12,8 @@ const LoadingAnimation = () => {
   const { user, setUser } = useCtx();
 
   useEffect(() => {
-    const tg = window.Telegram.WebApp;
-    if (tg.initDataUnsafe) {
-      const user = tg.initDataUnsafe.user;
-      setUser(user);
-    }
-
-    tg.expand();
+    const user = getTelegramUser();
+    console.log("TON USER: ", user);
 
     const loadingTimer = setTimeout(() => {
       checkUserExists(user);
@@ -28,7 +23,7 @@ const LoadingAnimation = () => {
   }, [navigate]);
 
   const checkUserExists = async (user) => {
-    console.log("USER", user);
+    console.log("Function User", user);
     const searchUserQuery = query(
       collection(db, "users"),
       where("id", "==", user.id)
@@ -39,6 +34,16 @@ const LoadingAnimation = () => {
       navigate("/home");
     } else {
       navigate("/referral");
+    }
+  };
+
+  const getTelegramUser = async() => {
+    const tg = window.Telegram.WebApp;
+    if (tg.initDataUnsafe) {
+      const user = await tg.initDataUnsafe.user;
+      setUser(user);
+      tg.expand();
+      return user;
     }
   };
 
