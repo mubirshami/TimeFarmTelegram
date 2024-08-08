@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import { collection, getDocs, updateDoc, doc, getDoc, query } from "firebase/firestore";
 import PetsIcon from "@mui/icons-material/Pets";
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "../button";
@@ -59,9 +59,11 @@ const Tasks = () => {
 
   const updateTaskCompletion = async (task) => {
     try {
-      const taskRef = doc(db, "tasks", task.id);
-      await updateDoc(taskRef, {
-        completedBy: [...task.completedBy, user.id],
+      const taskquery = query(collection(db, "tasks"), where("id", "==", task.id));
+      const result = await getDocs(taskquery);
+      const taskData = result.docs[0].data();
+      await updateDoc(taskData, {
+        completedBy: [...taskData.completedBy, user.id],
       });
       setTaskDone(true);
     } catch (error) {
