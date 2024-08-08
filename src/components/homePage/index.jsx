@@ -19,7 +19,6 @@ const HomePage = () => {
   const { user, total, setTotal } = useCtx();
 
   useEffect(() => {
-    console.log("User:", user);
     getData();
     let timer;
     if (isFarming) {
