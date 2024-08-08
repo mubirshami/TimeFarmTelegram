@@ -70,6 +70,9 @@ const Tasks = () => {
       console.log("Total:", total);
       console.log("Update Function User:", user.id);
       const taskRef = doc(db, "tasks", task.id);
+      const docSnap = await getDocs(taskRef);
+      const taskData = docSnap.data();
+      const completedBy = taskData.completedBy;
       await updateDoc(taskRef, {
         completedBy: [...completedBy, user.id],
       });
