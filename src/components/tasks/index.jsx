@@ -26,7 +26,6 @@ const Tasks = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    console.log("User:", user);
     getTasks();
   }, []);
 
@@ -92,9 +91,7 @@ const Tasks = () => {
     }
   };
 
-  const updateTotalSheepDawg = async (amount) => {
-    console.log("User ID: ", user.id);
-   
+  const updateTotalSheepDawg = async (amount) => {   
       const getUserQuery = query(collection(db, "users"), where("id", "==", user.id));
       const result = await getDocs(getUserQuery);
       const userRef = doc(db, "users", result.docs[0].id);
