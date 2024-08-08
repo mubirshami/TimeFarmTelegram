@@ -67,12 +67,16 @@ const Tasks = () => {
   };
 
   const updateTaskCompletion = async (task) => {
-      const getTaskQuery = query(collection(db, "tasks"), where("id", "==", task.id));
+    try {
+      const getTaskQuery = query(
+        collection(db, "tasks"),
+        where("id", "==", task.id)
+      );
       const result = await getDocs(getTaskQuery);
       const taskData = result.docs[0].data();
-      console.log("taskData", taskData,"user.id", user.id);
-      try{
-      await updateDoc(taskData, {
+      const taskkRef = doc(db, "tasks", result.docs[0].id);
+
+      await updateDoc(taskkRef, {
         completedBy: arrayUnion(user.id),
       });
     } catch (error) {
