@@ -7,6 +7,7 @@ import {
   doc,
   where,
   query,
+  getDoc
 } from "firebase/firestore";
 import PetsIcon from "@mui/icons-material/Pets";
 import CloseIcon from "@mui/icons-material/Close";
