@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { collection, getDocs, updateDoc, doc, getDoc, query } from "firebase/firestore";
+import { collection, getDocs, updateDoc, doc, where, query } from "firebase/firestore";
 import PetsIcon from "@mui/icons-material/Pets";
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "../button";
