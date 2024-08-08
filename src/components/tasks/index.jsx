@@ -95,7 +95,6 @@ const Tasks = () => {
    
       const getUserQuery = query(collection(db, "users"), where("id", "==", user.id));
       const result = await getDocs(getUserQuery);
-      const user = result.docs[0].data();
       const userRef = doc(db, "users", result.docs[0].id);
       try {
       await updateDoc(userRef, {
