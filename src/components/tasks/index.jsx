@@ -71,6 +71,7 @@ const Tasks = () => {
       const getTaskQuery = query(collection(db, "tasks"), where("id", "==", task.id));
       const result = await getDocs(getTaskQuery);
       const taskData = result.docs[0].data();
+      console.log("taskData", taskData,"user.id", user.id);
       await updateDoc(taskData, {
         completedBy: arrayUnion(user.id),
       });
