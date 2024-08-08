@@ -6,9 +6,14 @@ import Button from "../button";
 import frensImg from "../../assets/buddies.png";
 import CloseIcon from "@mui/icons-material/Close";
 import PetsIcon from "@mui/icons-material/Pets";
+import { useCtx } from "../../context/useContext";
+import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const Frens = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { total, setTotal, user } = useCtx();
+  const [inviteCount, setInviteCount] = useState(0);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -16,6 +21,40 @@ const Frens = () => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  const getUserInviteCount = async () => {
+    try{
+      const getInvitesQuery = query(collection(db, "users"), where("id", "==", user.id));
+      const result = await getDocs(getInvitesQuery);
+      if(!result.empty){
+        const userData = result.docs[0].data();
+        setInviteCount(userData.inviteCount);
+      }
+    }
+    catch(error){
+      console.error("Error getting user invite count:", error);
+    }
+  }
+
+  const updateTotalSheepDawg = async (amount) => {
+    try {
+      const updateQuery = query(
+        collection(db, "users"),
+        where("id", "==", user.id)
+      );
+      const result = await getDocs(updateQuery);
+      if (!result.empty) {
+        const userDoc = result.docs[0];
+        const userRef = doc(db, "users", userDoc.id);
+        await updateDoc(userRef, {
+          totalSheepDawg: total + amount,
+        });
+        setTotal(total + amount);
+      }
+    } catch (error) {
+      console.error("Error updating total sheepdawg:", error);
+    }
   };
 
   return (
@@ -103,7 +142,6 @@ const Frens = () => {
           <CloseIcon className="modal-close-icon" onClick={closeModal} />
         </div>
         <div className="modal-popup">
-          <Button text="Send in Telegram" />
           <Button text="Copy Link" />
         </div>
       </Modal>

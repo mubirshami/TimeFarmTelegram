@@ -1,29 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import Navbar from "../navbar";
+import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import PetsIcon from "@mui/icons-material/Pets";
-import "./index.css";
-import Button from "../button";
 import CloseIcon from "@mui/icons-material/Close";
-import TelegramIcon from "../../assets/telegram-icon.png";
-import XIcon from "../../assets/x-icon.png";
-import YouTubeIcon from "../../assets/youtube-icon.png";
-import InstaIcon from "../../assets/insta-icon.png";
-import WalletIcon from "../../assets/wallet-icon.png";
+import Button from "../button";
+import Navbar from "../navbar";
+import "./index.css";
+import { db } from "../../firebase";
+import { useCtx } from "../../context/useContext";
 
 const Tasks = () => {
+  const { user, total, setTotal } = useCtx();
   const [activeTab, setActiveTab] = useState("Active");
   const [activeTask, setActiveTask] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [taskDone, setTaskDone] = useState(false);
+  const [tasks, setTasks] = useState([]);
 
-  const tasks = [
-    { id: 1, description: "Follow our Telegram Channel", reward: "5000", url:"https://telegram.org/",pic:TelegramIcon },
-    { id: 2, description: "Follow us on X", reward: "5000", url:"https://twitter.com/?lang=en", pic:XIcon },
-    { id: 3, description: "Follow us on YouTube", reward: "5000",  url:"https://www.youtube.com/",pic:YouTubeIcon },
-    { id: 4, description: "Follow us on Instagram", reward: "5000", url:"https://www.instagram.com/", pic:InstaIcon },
-    { id: 5, description: "Connect your wallet", reward: "5000", url:"https://telegram.org/",pic:WalletIcon },
-  ];
+  useEffect(() => {
+    getTasks();
+  }, []);
+
+  const getTasks = async () => {
+    try {
+      // Fetch all tasks from Firestore
+      const tasksQuery = collection(db, "tasks");
+      const result = await getDocs(tasksQuery);
+
+      // Filter out tasks that have been completed by the current user
+      const filteredTasks = result.docs
+        .map((doc) => ({ id: doc.id, ...doc.data() }))
+        .filter((task) => !task.completedBy.includes(user.id));
+
+      setTasks(filteredTasks);
+    } catch (error) {
+      console.error("Error getting tasks:", error);
+    }
+  };
 
   const handleStartTask = (task) => {
     setActiveTask(task);
@@ -34,18 +47,46 @@ const Tasks = () => {
     setModalOpen(false);
     setActiveTask(null);
     setTaskDone(false);
+    getTasks(); // Refresh tasks after closing the modal
   };
 
-  const taskCompletion = () => {
-    window.open(activeTask.url, "_blank");
-    setTaskDone(true);
-  }
+  const taskCompletion = async () => {
+    if (activeTask) {
+      window.open(activeTask.url, "_blank");
+      await updateTaskCompletion(activeTask);
+    }
+  };
 
-  const claimPoints = () => {
-    if(taskDone) {
+  const updateTaskCompletion = async (task) => {
+    try {
+      const taskRef = doc(db, "tasks", task.id);
+      await updateDoc(taskRef, {
+        completedBy: [...task.completedBy, user.id],
+      });
+      setTaskDone(true);
+    } catch (error) {
+      console.error("Error updating task completion:", error);
+    }
+  };
+
+  const claimPoints = async () => {
+    if (taskDone) {
+      await updateTotalSheepDawg(activeTask.reward);
       closeModal();
     }
-  }
+  };
+
+  const updateTotalSheepDawg = async (amount) => {
+    try {
+      const userRef = doc(db, "users", user.id);
+      await updateDoc(userRef, {
+        totalSheepDawg: total + amount,
+      });
+      setTotal(total + amount);
+    } catch (error) {
+      console.error("Error updating total sheepdawg:", error);
+    }
+  };
 
   return (
     <div className="task-list-container">
@@ -74,18 +115,26 @@ const Tasks = () => {
           <ul className="task-list">
             {tasks.map((task) => (
               <li key={task.id} className="task-item">
-                <img src={task.pic} alt="icon" className="task-icon"/>
+                <img src={task.pic} alt="icon" className="task-icon" />
                 <div className="task-desc">{task.description}</div>
-                <div className="task-reward"><PetsIcon className="task-reward-icon"/>{task.reward}</div>
-                <button className="task-start-button" onClick={() => handleStartTask(task)}>Start</button>
+                <div className="task-reward">
+                  <PetsIcon className="task-reward-icon" />
+                  {task.reward}
+                </div>
+                <button
+                  className="task-start-button"
+                  onClick={() => handleStartTask(task)}
+                >
+                  Start
+                </button>
               </li>
             ))}
           </ul>
         ) : (
           <div className="completed-message">
             <p>
-              Congratulations! You have completed all the tasks, we will add new
-              ones soon. Try to come back here later!
+              Congratulations! You have completed all the tasks, we will add
+              new ones soon. Try to come back here later!
             </p>
           </div>
         )}
@@ -95,18 +144,22 @@ const Tasks = () => {
           isOpen={modalOpen}
           onRequestClose={closeModal}
           contentLabel="Task Details"
-          className={`modal-task ${modalOpen ? 'open' : ''}`}
-          overlayClassName={`modal-overlay-task ${modalOpen ? 'open' : 'closed'}`}
+          className={`modal-task ${modalOpen ? "open" : ""}`}
+          overlayClassName={`modal-overlay-task ${modalOpen ? "open" : "closed"}`}
         >
           <div className="modal-content-task">
-            <CloseIcon className="close-button" onClick={closeModal}/>
+            <CloseIcon className="close-button" onClick={closeModal} />
             <h2>{activeTask.description}</h2>
-            <Button text="Start" onClick={taskCompletion} className="modal-start-button"/>
+            <Button
+              text="Start"
+              onClick={taskCompletion}
+              className="modal-start-button"
+            />
             <div className="modal-task-reward">
               <PetsIcon className="modal-task-reward-icon" />
               {activeTask.reward}
             </div>
-            <Button text="Claim" onClick={claimPoints} className="claim-button"/>
+            <Button text="Claim" onClick={claimPoints} className="claim-button" />
           </div>
         </Modal>
       )}
