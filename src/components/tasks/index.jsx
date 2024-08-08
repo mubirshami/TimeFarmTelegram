@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { collection, getDocs, updateDoc, doc, where, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  updateDoc,
+  doc,
+  where,
+  query,
+} from "firebase/firestore";
 import PetsIcon from "@mui/icons-material/Pets";
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "../button";
@@ -62,11 +69,9 @@ const Tasks = () => {
       console.log("Task:", task);
       console.log("Total:", total);
       console.log("Update Function User:", user.id);
-      const taskquery = query(collection(db, "tasks"), where("id", "==", task.id));
-      const result = await getDocs(taskquery);
-      const taskData = result.docs[0].data();
-      await updateDoc(taskData, {
-        completedBy: [...taskData.completedBy, user.id],
+      const taskRef = doc(db, "tasks", task.id);
+      await updateDoc(taskRef, {
+        completedBy: [...completedBy, user.id],
       });
       setTaskDone(true);
     } catch (error) {
@@ -138,8 +143,8 @@ const Tasks = () => {
         ) : (
           <div className="completed-message">
             <p>
-              Congratulations! You have completed all the tasks, we will add
-              new ones soon. Try to come back here later!
+              Congratulations! You have completed all the tasks, we will add new
+              ones soon. Try to come back here later!
             </p>
           </div>
         )}
@@ -150,7 +155,9 @@ const Tasks = () => {
           onRequestClose={closeModal}
           contentLabel="Task Details"
           className={`modal-task ${modalOpen ? "open" : ""}`}
-          overlayClassName={`modal-overlay-task ${modalOpen ? "open" : "closed"}`}
+          overlayClassName={`modal-overlay-task ${
+            modalOpen ? "open" : "closed"
+          }`}
         >
           <div className="modal-content-task">
             <CloseIcon className="close-button" onClick={closeModal} />
@@ -164,7 +171,11 @@ const Tasks = () => {
               <PetsIcon className="modal-task-reward-icon" />
               {activeTask.reward}
             </div>
-            <Button text="Claim" onClick={claimPoints} className="claim-button" />
+            <Button
+              text="Claim"
+              onClick={claimPoints}
+              className="claim-button"
+            />
           </div>
         </Modal>
       )}
