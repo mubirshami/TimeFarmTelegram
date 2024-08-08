@@ -62,6 +62,7 @@ const Tasks = () => {
     if (activeTask) {
       window.open(activeTask.url, "_blank");
       await updateTaskCompletion(activeTask);
+      setTaskDone(true);
     }
   };
 
@@ -73,7 +74,6 @@ const Tasks = () => {
       await updateDoc(taskData, {
         completedBy: arrayUnion(user.id),
       });
-      setTaskDone(true);
     } catch (error) {
       console.error("Error updating task completion:", error);
     }
