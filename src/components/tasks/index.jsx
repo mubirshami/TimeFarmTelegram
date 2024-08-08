@@ -7,6 +7,7 @@ import {
   doc,
   where,
   query,
+  arrayUnion,
 } from "firebase/firestore";
 import PetsIcon from "@mui/icons-material/Pets";
 import CloseIcon from "@mui/icons-material/Close";
@@ -66,16 +67,9 @@ const Tasks = () => {
 
   const updateTaskCompletion = async (task) => {
     try {
-      console.log("Task:", task);
-      console.log("Total:", total);
-      console.log("Update Function User:", user.id);
       const taskRef = doc(db, "tasks", task.id);
-      const docSnap = await getDocs(taskRef);
-      const taskData = docSnap.data();
-      const completedBy = taskData.completedBy;
-      const UserId = String(user.id);
       await updateDoc(taskRef, {
-        completedBy: [...completedBy, UserId],
+        completedBy: arrayUnion(user.id),
       });
       setTaskDone(true);
     } catch (error) {
