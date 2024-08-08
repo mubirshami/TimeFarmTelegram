@@ -59,6 +59,9 @@ const Tasks = () => {
 
   const updateTaskCompletion = async (task) => {
     try {
+      console.log("Task:", task);
+      console.log("Total:", total);
+      console.log("Update Function User:", user.id);
       const taskquery = query(collection(db, "tasks"), where("id", "==", task.id));
       const result = await getDocs(taskquery);
       const taskData = result.docs[0].data();
