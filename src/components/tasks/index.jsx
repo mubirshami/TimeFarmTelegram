@@ -67,16 +67,31 @@ const Tasks = () => {
   const updateTaskCompletion = async (task) => {
     try {
       console.log("Task:", task);
-      console.log("Total:", total);
       console.log("Update Function User:", user.id);
+
+      // Reference to the Firestore document
       const taskRef = doc(db, "tasks", task.id);
-      const docSnap = await getDocs(taskRef);
-      const taskData = docSnap.data();
-      const completedBy = taskData.completedBy;
-      await updateDoc(taskRef, {
-        completedBy: [...completedBy, user.id],
-      });
-      setTaskDone(true);
+
+      // Fetch the current document data
+      const taskDoc = await getDoc(taskRef);
+      if (!taskDoc.exists()) {
+        throw new Error("Task does not exist");
+      }
+
+      // Get the current completedBy array
+      const taskData = taskDoc.data();
+      const completedBy = Array.isArray(taskData.completedBy)
+        ? taskData.completedBy
+        : [];
+
+      // Check if user.id is already in the completedBy array
+      if (!completedBy.includes(user.id)) {
+        // Update the document with the new completedBy array
+        await updateDoc(taskRef, {
+          completedBy: [...completedBy, user.id],
+        });
+        setTaskDone(true);
+      }
     } catch (error) {
       console.error("Error updating task completion:", error);
     }
