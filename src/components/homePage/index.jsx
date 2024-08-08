@@ -16,7 +16,7 @@ const HomePage = () => {
   const [isFarming, setIsFarming] = useState(false);
   const [farmingEnded, setFarmingEnded] = useState(false);
   const navigate = useNavigate();
-  const { user, setUser, total, setTotal } = useCtx();
+  const { user, total, setTotal } = useCtx();
 
   useEffect(() => {
     console.log("User:", user);
