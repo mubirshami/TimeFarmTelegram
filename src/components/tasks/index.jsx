@@ -18,7 +18,7 @@ import { db } from "../../firebase";
 import { useCtx } from "../../context/useContext";
 
 const Tasks = () => {
-  const { user, total, setTotal } = useCtx();
+  const { user, total, setTotal, maxValue } = useCtx();
   const [activeTab, setActiveTab] = useState("Active");
   const [activeTask, setActiveTask] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -91,15 +91,25 @@ const Tasks = () => {
     }
   };
 
-  const updateTotalSheepDawg = async (amount) => {   
-      const getUserQuery = query(collection(db, "users"), where("id", "==", user.id));
-      const result = await getDocs(getUserQuery);
-      const userRef = doc(db, "users", result.docs[0].id);
-      try {
-      await updateDoc(userRef, {
-        totalSheepDawg: total + amount,
-      });
-      setTotal(total + amount);
+  const updateTotalSheepDawg = async (amount) => {
+    const getUserQuery = query(
+      collection(db, "users"),
+      where("id", "==", user.id)
+    );
+    const result = await getDocs(getUserQuery);
+    const userRef = doc(db, "users", result.docs[0].id);
+    try {
+      if (total + amount >= maxValue) {
+        await updateDoc(userRef, {
+          totalSheepDawg: maxValue,
+        });
+        setTotal(maxValue);
+      } else {
+        await updateDoc(userRef, {
+          totalSheepDawg: total + amount,
+        });
+        setTotal(total + amount);
+      }
     } catch (error) {
       console.error("Error updating total sheepdawg:", error);
     }

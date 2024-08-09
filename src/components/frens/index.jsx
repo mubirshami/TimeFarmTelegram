@@ -4,14 +4,21 @@ import Navbar from "../navbar";
 import Button from "../button";
 import frensImg from "../../assets/buddies.png";
 import { useCtx } from "../../context/useContext";
-import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../../firebase";
 import "./index.css";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Frens = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { total, setTotal, user } = useCtx();
+  const { total, setTotal, user, maxValue } = useCtx();
   const [inviteCount, setInviteCount] = useState(0);
   const [claimedRewards, setClaimedRewards] = useState([]);
   const [goalsAndRewards, setGoalsAndRewards] = useState([]);
@@ -20,7 +27,10 @@ const Frens = () => {
   // Fetch user data
   const getUserData = async () => {
     try {
-      const getUserQuery = query(collection(db, "users"), where("id", "==", user.id));
+      const getUserQuery = query(
+        collection(db, "users"),
+        where("id", "==", user.id)
+      );
       const result = await getDocs(getUserQuery);
       if (!result.empty) {
         const userData = result.docs[0].data();
@@ -37,7 +47,7 @@ const Frens = () => {
     try {
       const goalsQuery = query(collection(db, "goalsAndRewards"));
       const querySnapshot = await getDocs(goalsQuery);
-      const goalsData = querySnapshot.docs.map(doc => doc.data());
+      const goalsData = querySnapshot.docs.map((doc) => doc.data());
 
       // Sort goals by goal value
       goalsData.sort((a, b) => a.goal - b.goal);
@@ -56,17 +66,26 @@ const Frens = () => {
   const claimReward = async (goal, reward) => {
     if (inviteCount >= goal && !claimedRewards.includes(goal)) {
       try {
-        const updateQuery = query(collection(db, "users"), where("id", "==", user.id));
+        const updateQuery = query(
+          collection(db, "users"),
+          where("id", "==", user.id)
+        );
         const result = await getDocs(updateQuery);
         if (!result.empty) {
           const userDoc = result.docs[0];
           const userRef = doc(db, "users", userDoc.id);
 
-          await updateDoc(userRef, {
-            claimedRewards: [...claimedRewards, goal],
-            totalSheepDawg: total + reward,
-          });
-
+          if (total + reward >= maxValue) {
+            await updateDoc(userRef, {
+              claimedRewards: [...claimedRewards, goal],
+              totalSheepDawg: maxValue,
+            });
+          } else {
+            await updateDoc(userRef, {
+              claimedRewards: [...claimedRewards, goal],
+              totalSheepDawg: total + reward,
+            });
+          }
           setClaimedRewards([...claimedRewards, goal]);
           setTotal(total + reward);
         }
@@ -78,9 +97,10 @@ const Frens = () => {
 
   const copyLinkToClipboard = () => {
     const url = "https://t.me/SheepDawgBot?start=75ikGpEzHnSaf5jb";
-    const referralIdText = `My Referral Id: ${user.id}`;    
-    const textToCopy = `${url}\n${referralIdText}`;    
-    navigator.clipboard.writeText(textToCopy)
+    const referralIdText = `My Referral Id: ${user.id}`;
+    const textToCopy = `${url}\n${referralIdText}`;
+    navigator.clipboard
+      .writeText(textToCopy)
       .then(() => {
         setCopyMessage("Link copied to clipboard!");
         setTimeout(() => setCopyMessage(""), 2000);
@@ -102,10 +122,18 @@ const Frens = () => {
         {goalsAndRewards.map(({ goal, reward }) => (
           <div className="frens-item" key={goal}>
             <div className="frens-item-section">
-              <img src={frensImg} alt={`Invite ${goal} Friends`} className="frens-icon" />
+              <img
+                src={frensImg}
+                alt={`Invite ${goal} Friends`}
+                className="frens-icon"
+              />
               <div className="frens-text">
-                <div className="invite-frens-item-heading">Invite {goal} Friends</div>
-                <div className="invite-frens-item-desc">Reward: {reward.toLocaleString()}</div>
+                <div className="invite-frens-item-heading">
+                  Invite {goal} Friends
+                </div>
+                <div className="invite-frens-item-desc">
+                  Reward: {reward.toLocaleString()}
+                </div>
               </div>
               <button
                 className="frens-claim-button"
@@ -116,7 +144,10 @@ const Frens = () => {
               </button>
             </div>
             <div className="progress-bar-container">
-              <div className="progress-bar" style={{ width: calculateProgress(goal) }}></div>
+              <div
+                className="progress-bar"
+                style={{ width: calculateProgress(goal) }}
+              ></div>
             </div>
           </div>
         ))}
@@ -134,7 +165,10 @@ const Frens = () => {
         <div className="modal-popup">
           <div className="modal-invite-heading">
             Invite Buddies
-            <CloseIcon className="modal-close-icon" onClick={() => setModalIsOpen(false)} />
+            <CloseIcon
+              className="modal-close-icon"
+              onClick={() => setModalIsOpen(false)}
+            />
           </div>
           <Button text="Copy Link" onClick={copyLinkToClipboard} />
           {copyMessage && <div className="copy-message">{copyMessage}</div>}

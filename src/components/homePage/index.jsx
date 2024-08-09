@@ -28,7 +28,8 @@ const HomePage = () => {
   const [farmingEnded, setFarmingEnded] = useState(false);
   const [canClaimDaily, setCanClaimDaily] = useState(false); // New state for daily reward
   const navigate = useNavigate();
-  const { user, total, setTotal } = useCtx();
+  const { user, total, setTotal, maxValue } = useCtx();
+  const [isMax, setIsMax] = useState(false);
 
   useEffect(() => {
     getData();
@@ -47,7 +48,12 @@ const HomePage = () => {
         const userRef = doc(db, "users", result.docs[0].id);
         const userDoc = await getDoc(userRef);
         const userData = userDoc.data();
-        setTotal(userData.totalSheepDawg);
+        if (userData.totalSheepDawg >= maxValue) {
+          setTotal(maxValue);
+          setIsMax(true);
+        } else {
+          setTotal(userData.totalSheepDawg);
+        }
       }
     } catch (error) {
       console.error("Error getting user data:", error);
@@ -119,13 +125,24 @@ const HomePage = () => {
       if (!result.empty) {
         const userRef = doc(db, "users", result.docs[0].id);
         const currentDate = new Date().toDateString();
-        await updateDoc(userRef, {
-          totalSheepDawg: total + 50,
-          lastClaimedDailyReward: currentDate,
-        });
-        setTotal(total + 50);
-        setCanClaimDaily(false);
-        setModalIsOpen(false);
+        if (total + 50 >= maxValue) {
+          await updateDoc(userRef, {
+            totalSheepDawg: maxValue,
+            lastClaimedDailyReward: currentDate,
+          });
+          setTotal(maxValue);
+          setCanClaimDaily(false);
+          setModalIsOpen(false);
+          setIsMax(true);
+        } else {
+          await updateDoc(userRef, {
+            totalSheepDawg: total + 50,
+            lastClaimedDailyReward: currentDate,
+          });
+          setTotal(total + 50);
+          setCanClaimDaily(false);
+          setModalIsOpen(false);
+        }
       }
     } catch (error) {
       console.error("Error claiming daily reward:", error);
@@ -177,11 +194,19 @@ const HomePage = () => {
       const result = await getDocs(updateTotalQuery);
       if (!result.empty) {
         const userRef = doc(db, "users", result.docs[0].id);
-        await updateDoc(userRef, {
-          totalSheepDawg: total + 50,
-          startTime: null, // Reset the start time after claiming
-        });
-        setFarmingEnded(false);
+        if (total + 50 >= maxValue) {
+          await updateDoc(userRef, {
+            totalSheepDawg: maxValue,
+            startTime: null, // Reset the start time after claiming
+          });
+          setFarmingEnded(false);
+        } else {
+          await updateDoc(userRef, {
+            totalSheepDawg: total + 50,
+            startTime: null, // Reset the start time after claiming
+          });
+          setFarmingEnded(false);
+        }
       }
     } catch (error) {
       console.error("Error updating total:", error);
@@ -227,7 +252,7 @@ const HomePage = () => {
           className="welcome-dawg-image"
         />
       </div>
-      {!isFarming && !farmingEnded ? (
+      {!isMax && !isFarming && !farmingEnded ? (
         <button className="start-button" onClick={handleStartFarming}>
           Start Farming
         </button>
