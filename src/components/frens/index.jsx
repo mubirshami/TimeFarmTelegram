@@ -8,18 +8,19 @@ import { collection, query, where, getDocs, updateDoc, doc } from "firebase/fire
 import { db } from "../../firebase";
 import "./index.css";
 import CloseIcon from "@mui/icons-material/Close";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const Frens = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { total, setTotal, user } = useCtx();
   const [inviteCount, setInviteCount] = useState(0);
   const [claimedRewards, setClaimedRewards] = useState([]);
+  const [goalsAndRewards, setGoalsAndRewards] = useState([]);
   const [copyMessage, setCopyMessage] = useState("");
 
+  // Fetch user data
   const getUserData = async () => {
     try {
-      const getUserQuery = query(collection(db, "users"), where("id", "==",user.id));
+      const getUserQuery = query(collection(db, "users"), where("id", "==", user.id));
       const result = await getDocs(getUserQuery);
       if (!result.empty) {
         const userData = result.docs[0].data();
@@ -28,6 +29,22 @@ const Frens = () => {
       }
     } catch (error) {
       console.error("Error getting user data:", error);
+    }
+  };
+
+  // Fetch goals and rewards from Firestore
+  const getGoalsAndRewards = async () => {
+    try {
+      const goalsQuery = query(collection(db, "goalsAndRewards"));
+      const querySnapshot = await getDocs(goalsQuery);
+      const goalsData = querySnapshot.docs.map(doc => doc.data());
+
+      // Sort goals by goal value
+      goalsData.sort((a, b) => a.goal - b.goal);
+
+      setGoalsAndRewards(goalsData);
+    } catch (error) {
+      console.error("Error fetching goals and rewards:", error);
     }
   };
 
@@ -43,7 +60,7 @@ const Frens = () => {
         const result = await getDocs(updateQuery);
         if (!result.empty) {
           const userDoc = result.docs[0];
-          const userRef = doc(db, "users", result.docs[0].id);
+          const userRef = doc(db, "users", userDoc.id);
 
           await updateDoc(userRef, {
             claimedRewards: [...claimedRewards, goal],
@@ -75,14 +92,8 @@ const Frens = () => {
 
   useEffect(() => {
     getUserData();
+    getGoalsAndRewards(); // Fetch goals and rewards from Firestore
   }, []);
-
-  const goalsAndRewards = [
-    { goal: 3, reward: 50000 },
-    { goal: 10, reward: 200000 },
-    { goal: 25, reward: 250000 },
-    { goal: 50, reward: 300000 },
-  ];
 
   return (
     <div className="frens-container">
