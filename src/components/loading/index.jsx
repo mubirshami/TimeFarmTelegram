@@ -9,7 +9,7 @@ import { collection, getDocs, query, where, addDoc } from "firebase/firestore";
 
 const LoadingAnimation = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useCtx();
+  const { user, setUser, welcomeBonus, setWelcomeBonus } = useCtx();
 
   useEffect(() => {
     const tg = window.Telegram.WebApp;
@@ -45,6 +45,7 @@ const LoadingAnimation = () => {
       if (!result.empty) {
         navigate("/home");
       } else {
+        setWelcomeBonus(true);
         await addUserToDatabase(user);
       }
     } catch (error) {
@@ -59,7 +60,9 @@ const LoadingAnimation = () => {
         id: user.id,
         referralCode: user.id,
         inviteCount: 0,
-        totalSheepDawg: 0
+        totalSheepDawg: 0,
+        startTime: null,
+        lastClaimedDailyReward: null,
       });
       navigate("/referral");
     } catch (error) {

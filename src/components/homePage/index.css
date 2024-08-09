@@ -90,3 +90,66 @@ body{
   font-size: 20px !important;
   margin: 0px 5px;
 }
+
+.modal {
+  position: fixed; /* Changed from absolute to fixed */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: lightgray;
+  border-radius: 0.5rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto; /* Ensure modal content is scrollable if needed */
+}
+
+.modal.open {
+  transform: translateY(0);
+}
+
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Changed to align modal to bottom */
+  position: fixed; /* Ensure overlay covers full viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease-out;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+}
+
+.modal-overlay.closed {
+  opacity: 0;
+}
+
+.modal-daily-login-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center content inside the modal */
+  padding: 1rem;
+  max-width: 90%; /* Ensure modal content fits well */
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-daily-login-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 22px;
+  width: 100%;
+}
+
