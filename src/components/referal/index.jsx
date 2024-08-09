@@ -1,13 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../firebase";
 import { collection, getDocs, query, where, doc, updateDoc, getDoc } from "firebase/firestore";
 import "./index.css";
+import { useCtx } from "../../context/useContext";
 
 const Referral = () => {
   const [referralCode, setReferralCode] = useState("");
   const [isCodeCorrect, setIsCodeCorrect] = useState(null);
   const navigate = useNavigate();
+  const {welcomeBonus, setWelcomeBonus, user} = useCtx();
+
+  useEffect(() => {
+    if (welcomeBonus) {
+      giveWelcomeBonus();
+    }
+  }, []);
+
+  const giveWelcomeBonus = async () => {
+    const getUserQuery = query(collection(db, "users"), where("id", "==", user.id));
+    const result = await getDocs(getUserQuery);
+    if (!result.empty) {
+      const userRef = doc(db, "users", result.docs[0].id);
+      await updateDoc(userRef, {
+        totalSheepDawg: 100,
+      });
+      setWelcomeBonus(false);
+    }
+  };
+
 
   const handleSkip = () => {
     navigate("/home");

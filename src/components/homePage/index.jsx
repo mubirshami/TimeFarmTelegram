@@ -28,7 +28,7 @@ const HomePage = () => {
   const [farmingEnded, setFarmingEnded] = useState(false);
   const [canClaimDaily, setCanClaimDaily] = useState(false); // New state for daily reward
   const navigate = useNavigate();
-  const { user, total, setTotal, welcomeBonus, setWelcomeBonus } = useCtx();
+  const { user, total, setTotal } = useCtx();
 
   useEffect(() => {
     getData();
@@ -47,14 +47,6 @@ const HomePage = () => {
         const userRef = doc(db, "users", result.docs[0].id);
         const userDoc = await getDoc(userRef);
         const userData = userDoc.data();
-
-        if (welcomeBonus) {
-          await updateDoc(userRef, {
-            totalSheepDawg: total + 100,
-          });
-          setWelcomeBonus(false);
-        }
-
         setTotal(userData.totalSheepDawg);
       }
     } catch (error) {
