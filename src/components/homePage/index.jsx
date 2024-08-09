@@ -30,6 +30,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   const { user, total, setTotal, maxValue } = useCtx();
   const [isMax, setIsMax] = useState(false);
+  const [farmingFactor, setFarmingFactor] = useState(1);
 
   useEffect(() => {
     getData();
@@ -124,8 +125,18 @@ const HomePage = () => {
       const result = await getDocs(userDataQuery);
       if (!result.empty) {
         const userRef = doc(db, "users", result.docs[0].id);
+        const userInviteCount = result.docs[0].data().inviteCount;
+        if (userInviteCount >= 2 && userInviteCount < 5) {
+          setFarmingFactor(2);
+        }
+        else if (userInviteCount >= 5 && userInviteCount < 25) {
+          setFarmingFactor(3);
+        }
+        else if (userInviteCount >= 25) {
+          setFarmingFactor(4);
+        }
         const currentDate = new Date().toDateString();
-        if (total + 50 >= maxValue) {
+        if (total + ( 50 * farmingFactor) >= maxValue) {
           await updateDoc(userRef, {
             totalSheepDawg: maxValue,
             lastClaimedDailyReward: currentDate,
@@ -136,10 +147,10 @@ const HomePage = () => {
           setIsMax(true);
         } else {
           await updateDoc(userRef, {
-            totalSheepDawg: total + 50,
+            totalSheepDawg: total + ( 50 * farmingFactor ),
             lastClaimedDailyReward: currentDate,
           });
-          setTotal(total + 50);
+          setTotal(total + ( 50 * farmingFactor ));
           setCanClaimDaily(false);
           setModalIsOpen(false);
         }
@@ -193,19 +204,33 @@ const HomePage = () => {
       );
       const result = await getDocs(updateTotalQuery);
       if (!result.empty) {
+        const userInvites = result.docs[0].data().inviteCount;
+        if (userInvites >= 2 && userInvites < 5) {
+          setFarmingFactor(2);
+        }
+        else if (userInvites >= 5 && userInvites < 25) {
+          setFarmingFactor(3);
+        }
+        else if (userInvites >= 25) {
+          setFarmingFactor(4);
+        }
         const userRef = doc(db, "users", result.docs[0].id);
-        if (total + 50 >= maxValue) {
+
+        if (total + ( 50 * farmingFactor ) >= maxValue) {
           await updateDoc(userRef, {
             totalSheepDawg: maxValue,
             startTime: null, // Reset the start time after claiming
           });
           setFarmingEnded(false);
+          setIsMax(true);
+          setTotal(maxValue);
         } else {
           await updateDoc(userRef, {
-            totalSheepDawg: total + 50,
+            totalSheepDawg: total + ( 50 * farmingFactor ),
             startTime: null, // Reset the start time after claiming
           });
           setFarmingEnded(false);
+          setTotal(total + ( 50 * farmingFactor ));
         }
       }
     } catch (error) {
@@ -269,7 +294,7 @@ const HomePage = () => {
       )}
       {farmingEnded && (
         <button className="claim-button" onClick={handleClaimPoints}>
-          Claim 50 Points
+          Claim Points
         </button>
       )}
       {canClaimDaily && (
@@ -284,7 +309,7 @@ const HomePage = () => {
             <div className="modal-daily-login-heading">
               Claim your Daily Login Reward
             </div>
-            <Button text="Claim 50 Sheep Dawg" onClick={claimDailyReward} />
+            <Button text="Claim Sheep Dawgs" onClick={claimDailyReward} />
           </div>
         </Modal>
       )}
