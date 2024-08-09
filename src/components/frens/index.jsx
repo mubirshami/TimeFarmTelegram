@@ -132,7 +132,7 @@ const Frens = () => {
                   Invite {goal} Friends
                 </div>
                 <div className="invite-frens-item-desc">
-                  Reward: {reward.toLocaleString()}
+                  Reward: {reward}
                 </div>
               </div>
               <button
