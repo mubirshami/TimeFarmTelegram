@@ -7,17 +7,19 @@ import { useCtx } from "../../context/useContext";
 import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 import "./index.css";
+import CloseIcon from "@mui/icons-material/Close";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const Frens = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false); // For managing the modal visibility
-  const { total, setTotal, user } = useCtx(); // Context variables
-  const [inviteCount, setInviteCount] = useState(0); // Tracks the number of invited friends
-  const [claimedRewards, setClaimedRewards] = useState([]); // Tracks which rewards have been claimed
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { total, setTotal, user } = useCtx();
+  const [inviteCount, setInviteCount] = useState(0);
+  const [claimedRewards, setClaimedRewards] = useState([]);
+  const [copyMessage, setCopyMessage] = useState("");
 
-  // Fetches the user's invite count and claimed rewards from Firestore
   const getUserData = async () => {
     try {
-      const getUserQuery = query(collection(db, "users"), where("id", "==", user.id));
+      const getUserQuery = query(collection(db, "users"), where("id", "==",user.id));
       const result = await getDocs(getUserQuery);
       if (!result.empty) {
         const userData = result.docs[0].data();
@@ -29,13 +31,11 @@ const Frens = () => {
     }
   };
 
-  // Updates the progress bar width based on the invite count
   const calculateProgress = (goal) => {
     const percentage = (inviteCount / goal) * 100;
-    return `${Math.min(percentage, 100)}%`; // Ensures it doesn't exceed 100%
+    return `${Math.min(percentage, 100)}%`;
   };
 
-  // Handles claiming a reward
   const claimReward = async (goal, reward) => {
     if (inviteCount >= goal && !claimedRewards.includes(goal)) {
       try {
@@ -59,11 +59,22 @@ const Frens = () => {
     }
   };
 
+  const copyLinkToClipboard = () => {
+    const url = "https://t.me/SheepDawgBot?start=75ikGpEzHnSaf5jb";
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        setCopyMessage("Link copied to clipboard!");
+        setTimeout(() => setCopyMessage(""), 2000);
+      })
+      .catch((error) => {
+        console.error("Failed to copy the link:", error);
+      });
+  };
+
   useEffect(() => {
-    getUserData(); // Fetch user data when the component loads
+    getUserData();
   }, []);
 
-  // Define the goals and rewards
   const goalsAndRewards = [
     { goal: 3, reward: 50000 },
     { goal: 10, reward: 200000 },
@@ -103,15 +114,17 @@ const Frens = () => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
-        className="modal"
-        overlayClassName="modal-overlay"
+        contentLabel="Invite Buddies"
+        className={`modal ${modalIsOpen ? "open" : ""}`}
+        overlayClassName={`modal-overlay ${modalIsOpen ? "open" : "closed"}`}
       >
-        <div className="modal-invite-heading">
-          <div>Invite Buddies</div>
-          <button onClick={() => setModalIsOpen(false)}>Close</button>
-        </div>
         <div className="modal-popup">
-          <Button text="Copy Link" />
+          <div className="modal-invite-heading">
+            Invite Buddies
+            <CloseIcon className="modal-close-icon" onClick={() => setModalIsOpen(false)} />
+          </div>
+          <Button text="Copy Link" onClick={copyLinkToClipboard} />
+          {copyMessage && <div className="copy-message">{copyMessage}</div>}
         </div>
       </Modal>
       <Navbar />

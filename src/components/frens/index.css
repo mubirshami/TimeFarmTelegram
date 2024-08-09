@@ -2,12 +2,11 @@
   width: auto;
   margin: auto;
   height: 97vh;
-  /* background-color: #2C2F35; */
   text-align: center;
-  font-family: Helvetica;
+  font-family: Helvetica, sans-serif;
   background-image: url("../../assets/background1.jpg");
-  background-size: cover; /* Ensures the image covers the entire container */
-  background-position: center; /* Centers the image */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
@@ -23,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  overflow: scroll;
+  overflow-y: auto; /* Changed from scroll to auto */
   height: 50%;
 }
 
@@ -104,12 +103,10 @@
 }
 
 .modal {
-  position: absolute;
+  position: fixed; /* Changed from absolute to fixed */
   bottom: 0;
   left: 0;
   right: 0;
-  max-width: 100%;
-  max-height: 100%;
   padding: 1rem;
   background-color: lightgray;
   border-radius: 0.5rem;
@@ -117,6 +114,9 @@
   border-bottom-right-radius: 0;
   transform: translateY(100%);
   transition: transform 0.3s ease-out;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto; /* Ensure modal content is scrollable if needed */
 }
 
 .modal.open {
@@ -126,7 +126,12 @@
 .modal-overlay {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end; /* Changed to align modal to bottom */
+  position: fixed; /* Ensure overlay covers full viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease-out;
 }
@@ -143,6 +148,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; /* Center content inside the modal */
+  padding: 1rem;
+  max-width: 90%; /* Ensure modal content fits well */
+  max-height: 80%;
+  overflow: auto;
 }
 
 .modal-invite-heading {
@@ -151,8 +161,17 @@
   align-items: center;
   font-weight: bold;
   font-size: 22px;
+  width: 100%;
 }
 
 .modal-close-icon {
   cursor: pointer;
+  font-size: 1.5rem; /* Adjust size for better visibility */
+}
+
+.copy-message {
+  color: goldenrod;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
 }
