@@ -61,7 +61,9 @@ const Frens = () => {
 
   const copyLinkToClipboard = () => {
     const url = "https://t.me/SheepDawgBot?start=75ikGpEzHnSaf5jb";
-    navigator.clipboard.writeText(url)
+    const referralIdText = `My Referral Id: ${user.id}`;    
+    const textToCopy = `${url}\n${referralIdText}`;    
+    navigator.clipboard.writeText(textToCopy)
       .then(() => {
         setCopyMessage("Link copied to clipboard!");
         setTimeout(() => setCopyMessage(""), 2000);

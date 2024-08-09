@@ -9,6 +9,8 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import PetsIcon from "@mui/icons-material/Pets";
 import { db } from "../../firebase";
 import { useCtx } from "../../context/useContext";
+import Modal from "react-modal";
+import Button from "../button";
 import {
   getDocs,
   query,
