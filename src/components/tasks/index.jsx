@@ -24,6 +24,8 @@ const Tasks = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [taskDone, setTaskDone] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [successfulClaimMessage, setSuccessfulClaimMessage] = useState("");
+
 
   useEffect(() => {
     getTasks();
@@ -38,7 +40,7 @@ const Tasks = () => {
       // Filter out tasks that have been completed by the current user
       const filteredTasks = result.docs
         .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((task) => !task.completedBy.includes(user.id));
+        .filter((task) => !task.completedBy.includes(2));
 
       setTasks(filteredTasks);
     } catch (error) {
@@ -55,7 +57,6 @@ const Tasks = () => {
     setModalOpen(false);
     setActiveTask(null);
     setTaskDone(false);
-    getTasks(); // Refresh tasks after closing the modal
   };
 
   const taskCompletion = async () => {
@@ -77,7 +78,7 @@ const Tasks = () => {
       const taskkRef = doc(db, "tasks", result.docs[0].id);
 
       await updateDoc(taskkRef, {
-        completedBy: arrayUnion(user.id),
+        completedBy: arrayUnion(2),
       });
     } catch (error) {
       console.error("Error updating task completion:", error);
@@ -86,7 +87,10 @@ const Tasks = () => {
 
   const claimPoints = async () => {
     if (taskDone) {
+      setSuccessfulClaimMessage("Points claimed successfully!");
+      setTimeout(() => setSuccessfulClaimMessage(""), 3000);
       await updateTotalSheepDawg(activeTask.reward);
+      await getTasks();
       closeModal();
     }
   };
@@ -94,7 +98,7 @@ const Tasks = () => {
   const updateTotalSheepDawg = async (amount) => {
     const getUserQuery = query(
       collection(db, "users"),
-      where("id", "==", user.id)
+      where("id", "==", 2)
     );
     const result = await getDocs(getUserQuery);
     const userRef = doc(db, "users", result.docs[0].id);
@@ -193,6 +197,7 @@ const Tasks = () => {
               onClick={claimPoints}
               className="claim-button"
             />
+            {successfulClaimMessage && <div className="successful-claim-message">{successfulClaimMessage}</div>}
           </div>
         </Modal>
       )}
