@@ -49,8 +49,7 @@ const Frens = () => {
       const querySnapshot = await getDocs(goalsQuery);
       const goalsData = querySnapshot.docs.map((doc) => doc.data());
 
-      // Sort goals by goal value
-      goalsData.sort((a, b) => a.goal - b.goal);
+      goalsData.sort((a, b) => a.goals - b.goals);
 
       setGoalsAndRewards(goalsData);
     } catch (error) {
@@ -73,7 +72,7 @@ const Frens = () => {
         const result = await getDocs(updateQuery);
         if (!result.empty) {
           const userDoc = result.docs[0];
-          const userRef = doc(db, "users", userDoc.id);
+          const userRef = doc(db, "users", result.docs[0].id);
 
           if (total + reward >= maxValue) {
             await updateDoc(userRef, {
@@ -119,34 +118,34 @@ const Frens = () => {
     <div className="frens-container">
       <div className="frens-heading">My Buddies</div>
       <div className="frens-list">
-        {goalsAndRewards.map(({ goal, reward }) => (
-          <div className="frens-item" key={goal}>
+        {goalsAndRewards.map(({ goals, rewards }) => (
+          <div className="frens-item" key={goals}>
             <div className="frens-item-section">
               <img
                 src={frensImg}
-                alt={`Invite ${goal} Friends`}
+                alt={`Invite ${goals} Friends`}
                 className="frens-icon"
               />
               <div className="frens-text">
                 <div className="invite-frens-item-heading">
-                  Invite {goal} Friends
+                  Invite {goals} Friends
                 </div>
                 <div className="invite-frens-item-desc">
-                  Reward: {reward}
+                  Reward: {rewards}
                 </div>
               </div>
               <button
                 className="frens-claim-button"
-                onClick={() => claimReward(goal, reward)}
-                disabled={inviteCount < goal || claimedRewards.includes(goal)}
+                onClick={() => claimReward(goals, rewards)}
+                disabled={inviteCount < goals || claimedRewards.includes(goals)}
               >
-                {claimedRewards.includes(goal) ? "Claimed" : "Claim"}
+                {claimedRewards.includes(goals) ? "Claimed" : "Claim"}
               </button>
             </div>
             <div className="progress-bar-container">
               <div
                 className="progress-bar"
-                style={{ width: calculateProgress(goal) }}
+                style={{ width: calculateProgress(goals) }}
               ></div>
             </div>
           </div>
