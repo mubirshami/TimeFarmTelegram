@@ -40,7 +40,7 @@ const Tasks = () => {
       // Filter out tasks that have been completed by the current user
       const filteredTasks = result.docs
         .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((task) => !task.completedBy.includes(2));
+        .filter((task) => !task.completedBy.includes(user.id));
 
       setTasks(filteredTasks);
     } catch (error) {
@@ -78,7 +78,7 @@ const Tasks = () => {
       const taskkRef = doc(db, "tasks", result.docs[0].id);
 
       await updateDoc(taskkRef, {
-        completedBy: arrayUnion(2),
+        completedBy: arrayUnion(user.id),
       });
     } catch (error) {
       console.error("Error updating task completion:", error);
@@ -98,7 +98,7 @@ const Tasks = () => {
   const updateTotalSheepDawg = async (amount) => {
     const getUserQuery = query(
       collection(db, "users"),
-      where("id", "==", 2)
+      where("id", "==", user.id)
     );
     const result = await getDocs(getUserQuery);
     const userRef = doc(db, "users", result.docs[0].id);
