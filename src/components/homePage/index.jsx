@@ -133,18 +133,17 @@ const HomePage = () => {
         });
         setTotal(total + 50);
         setCanClaimDaily(false);
-        setModalIsOpen(false); 
+        setModalIsOpen(false);
       }
     } catch (error) {
       console.error("Error claiming daily reward:", error);
     }
   };
-
   const startFarmingTimer = (initialTime) => {
     let timer = setInterval(() => {
       setTime((prevTime) => {
         if (prevTime > 0) {
-          return prevTime - 1;
+          return Math.floor(prevTime - 1); // Ensure the value is an integer
         } else {
           setIsFarming(false);
           setFarmingEnded(true);
@@ -257,20 +256,20 @@ const HomePage = () => {
         </button>
       )}
       {canClaimDaily && (
-       <Modal
-       isOpen={modalIsOpen}
-       onRequestClose={() => setModalIsOpen(false)}
-       contentLabel="Daily Login Rewards"
-       className={`modal ${modalIsOpen ? "open" : ""}`}
-       overlayClassName={`modal-overlay ${modalIsOpen ? "open" : "closed"}`}
-     >
-       <div className="modal-daily-login-popup">
-         <div className="modal-daily-login-heading">
-           Claim your Daily Login Reward
-         </div>
-         <Button text="Claim 50 Sheep Dawg" onClick={claimDailyReward} />
-       </div>
-     </Modal>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          contentLabel="Daily Login Rewards"
+          className={`modal ${modalIsOpen ? "open" : ""}`}
+          overlayClassName={`modal-overlay ${modalIsOpen ? "open" : "closed"}`}
+        >
+          <div className="modal-daily-login-popup">
+            <div className="modal-daily-login-heading">
+              Claim your Daily Login Reward
+            </div>
+            <Button text="Claim 50 Sheep Dawg" onClick={claimDailyReward} />
+          </div>
+        </Modal>
       )}
       <Navbar />
     </div>
